@@ -29,7 +29,7 @@ import json
 import urllib.error
 import urllib.request
 from dataclasses import dataclass, field
-from typing import Any, Sequence
+from typing import Any, Callable, Sequence
 
 from .connascence import (
     ConnascenceEdge,
@@ -376,14 +376,18 @@ def enrich_event_attribution(
     result: EnrichmentResult,
     *,
     window_size: int = WINDOW_SIZE,
+    progress: Callable[[int, int], None] | None = None,
 ) -> None:
     events_by_id = {e.event_id: e for e in events}
     clusters_by_id = {c.cluster_id: c for c in clusters}
     hyp = f"llm_proposer:{client.model}"
 
-    for window in _windows(list(clusters), window_size):
+    windows = _windows(list(clusters), window_size)
+    for i, window in enumerate(windows):
         out = client.chat_json(_EVENT_SYSTEM, _cluster_prompt(window, events), _EVENT_SCHEMA)
         result.windows_run += 1
+        if progress is not None:
+            progress(i + 1, len(windows))
         if out is None:
             result.windows_failed += 1
             continue
@@ -441,13 +445,17 @@ def enrich_conceptual_couplings(
     result: EnrichmentResult,
     *,
     window_size: int = WINDOW_SIZE,
+    progress: Callable[[int, int], None] | None = None,
 ) -> None:
     pairs_by_id = {p.pair_id: p for p in pairs}
     hyp = f"llm_proposer:{client.model}"
 
-    for window in _windows(list(pairs), window_size):
+    windows = _windows(list(pairs), window_size)
+    for i, window in enumerate(windows):
         out = client.chat_json(_COUPLING_SYSTEM, _pair_prompt(window), _COUPLING_SCHEMA)
         result.windows_run += 1
+        if progress is not None:
+            progress(i + 1, len(windows))
         if out is None:
             result.windows_failed += 1
             continue
