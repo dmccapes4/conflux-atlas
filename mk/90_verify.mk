@@ -5,7 +5,7 @@
 
 VALIDATION_DIR ?= data-validation-reports
 
-.PHONY: reports-dir verify-all verify-data shape-report phase0-reports test test-network
+.PHONY: reports-dir verify-all verify-data shape-report phase0-reports test test-network test-phase1
 
 reports-dir:
 	@mkdir -p "$(VALIDATION_DIR)"
@@ -27,6 +27,11 @@ shape-report: verify-all phase0-reports ## Verify report + committed shape/veloc
 
 test: ## Phase 0 pytest gate (offline; skips -m network)
 	@$(PY) -m pytest -q -m "not network"
+
+test-phase1: ## Phase 1 contracts only, with skip reasons (-rs) while unimplemented
+	@$(PY) -m pytest -q -rs -m phase1; rc=$$?; \
+	if [ $$rc -eq 5 ]; then echo "(phase1 modules not implemented yet — contracts all skipped)"; exit 0; fi; \
+	exit $$rc
 
 test-network: ## Opt-in live URL probes (scrapers/APIs may 404/rotate)
 	@env -u HTTP_PROXY -u HTTPS_PROXY -u ALL_PROXY -u http_proxy -u https_proxy -u all_proxy \
