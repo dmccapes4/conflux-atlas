@@ -1,0 +1,258 @@
+#!/usr/bin/env python3
+"""Phase 2b — LLM windowed enrichment (STRATEGY_CONNASCENCE.md §3).
+
+Runs the two constrained proposer jobs over the Phase 2b artifacts:
+
+  job 1: attribute co-variance clusters to documented events;
+  job 2: classify candidate series pairs into conceptual couplings.
+
+Every proposal is recorded and settled as a claim under
+``llm_proposer:<model>`` against a deterministic verifier — the model
+earns a trust posterior like any other source. Only verifier-passed
+proposals materialize as edges (PHASE2B_LLM_EDGES.jsonl).
+
+Both jobs share one loaded base model (qwen3:8b by default): the persona
+and hard rules travel as a per-request system-prompt preamble and the
+deterministic decoding parameters (temperature 0, top_k 1, fixed seed) as
+per-request options — no Modelfile, so the two agents never trigger a
+tensor re-load for identical parameters.
+
+Prereqs:
+  ollama pull qwen3:8b
+  scripts/run_phase2b_connascence.py                   # cluster inputs
+
+Usage:
+  python scripts/run_llm_enrichment.py [--model NAME] [--window 12]
+"""
+
+from __future__ import annotations
+
+import argparse
+import json
+import sys
+from pathlib import Path
+
+ROOT = Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(ROOT))
+
+from conflux import movement  # noqa: E402
+from conflux.connascence import (  # noqa: E402
+    CovarianceCluster,
+    load_events,
+    write_edges_jsonl,
+)
+from conflux.learning import TrustStore  # noqa: E402
+from conflux.llm_enrich import (  # noqa: E402
+    DEFAULT_MODEL,
+    EnrichmentResult,
+    OllamaClient,
+    PairCandidate,
+    enrich_conceptual_couplings,
+    enrich_event_attribution,
+)
+from conflux.observations import load_observation_desk  # noqa: E402
+from conflux.schema import Anchor, MigrationEdge  # noqa: E402
+
+PROCESSED = ROOT / "data" / "processed"
+OUT = ROOT / "data-validation-reports"
+
+
+def _load_jsonl(path: Path, model):
+    out = []
+    with path.open(encoding="utf-8") as f:
+        for line in f:
+            line = line.strip()
+            if line:
+                out.append(model.model_validate(json.loads(line)))
+    return out
+
+
+def _load_clusters() -> list[CovarianceCluster]:
+    path = OUT / "PHASE2B_CLUSTERS.json"
+    if not path.exists():
+        sys.exit("run scripts/run_phase2b_connascence.py first (no clusters file)")
+    data = json.loads(path.read_text(encoding="utf-8"))
+    return [
+        CovarianceCluster(
+            cluster_id=c["cluster_id"],
+            series=c["series"],
+            year_min=c["year_min"],
+            year_max=c["year_max"],
+            dominant_direction=c["dominant_direction"],
+            n_edges=c["n_edges"],
+        )
+        for c in data["clusters"]
+    ]
+
+
+def _pair_candidates(obs, mig_edges) -> list[PairCandidate]:
+    """Candidate windows for job 2: real couplings mixed with decoys.
+
+    The mix is deliberate — the proposer must separate true couplings
+    from lookalikes, otherwise its posterior is free.
+    """
+    pairs: list[PairCandidate] = []
+    seen: set[str] = set()
+
+    def add(pid, hint, **kw):
+        if pid in seen:
+            return
+        seen.add(pid)
+        pairs.append(PairCandidate(pair_id=pid, kind_hint=hint, **kw))
+
+    # (a) same source, polity, year, different groups → complement candidates
+    from collections import defaultdict
+
+    by_spy = defaultdict(list)
+    for o in obs:
+        by_spy[(o.source_id, o.polity_id, o.year)].append(o)
+    for (src, pid, year), rows in sorted(by_spy.items()):
+        if len(rows) < 2:
+            continue
+        a, b = sorted(rows, key=lambda o: o.group)[:2]
+        add(
+            f"cand|{src}|{pid}|{year}|{a.group}|{b.group}",
+            {
+                "series_a": {"source": src, "polity": pid, "group": a.group, "year": year},
+                "series_b": {"source": src, "polity": pid, "group": b.group, "year": year},
+            },
+            polity_a=pid, polity_b=pid, group_a=a.group, group_b=b.group,
+            source_a=src, source_b=src, year_a=year, year_b=year,
+        )
+        if len(pairs) >= 40:
+            break
+
+    # (b) same group across migration-edge polity pairs → conservation
+    # candidates, plus decoys with no documented flow.
+    edge_pairs = {(e.from_polity, e.to_polity, e.group.value) for e in mig_edges}
+    for fp, tp, g in sorted(edge_pairs):
+        add(
+            f"cand|series|{fp}|{tp}|{g}",
+            {
+                "series_a": {"polity": fp, "group": g},
+                "series_b": {"polity": tp, "group": g},
+                "note": "national share series pair",
+            },
+            polity_a=fp, polity_b=tp, group_a=g, group_b=g,
+            source_a="*series*", source_b="*series*",
+        )
+    for fp, tp, g in [
+        ("egypt", "turkey", "jewish"),      # no documented edge
+        ("morocco", "iraq", "christian"),   # no documented edge
+        ("iran", "yemen", "muslim"),        # no documented edge
+    ]:
+        add(
+            f"cand|series|{fp}|{tp}|{g}",
+            {
+                "series_a": {"polity": fp, "group": g},
+                "series_b": {"polity": tp, "group": g},
+                "note": "national share series pair",
+            },
+            polity_a=fp, polity_b=tp, group_a=g, group_b=g,
+            source_a="*series*", source_b="*series*",
+        )
+
+    # (c) cross-source same polity-year-group → definition candidates.
+    by_pgy = defaultdict(list)
+    for o in obs:
+        by_pgy[(o.polity_id, o.group, o.year)].append(o)
+    n_def = 0
+    for (pid, g, year), rows in sorted(by_pgy.items()):
+        srcs = sorted({o.source_id for o in rows})
+        if len(srcs) < 2:
+            continue
+        a, b = srcs[:2]
+        add(
+            f"cand|{a}|{b}|{pid}|{g}|{year}",
+            {
+                "series_a": {"source": a, "polity": pid, "group": g, "year": year},
+                "series_b": {"source": b, "polity": pid, "group": g, "year": year},
+            },
+            polity_a=pid, polity_b=pid, group_a=g, group_b=g,
+            source_a=a, source_b=b, year_a=year, year_b=year,
+        )
+        n_def += 1
+        if n_def >= 30:
+            break
+
+    return pairs
+
+
+def main() -> None:
+    ap = argparse.ArgumentParser()
+    ap.add_argument("--model", default=None, help="ollama model name")
+    ap.add_argument("--window", type=int, default=12)
+    ap.add_argument("--url", default="http://localhost:11434")
+    args = ap.parse_args()
+
+    client = OllamaClient(model=args.model or DEFAULT_MODEL, base_url=args.url)
+    if not client.available():
+        sys.exit(
+            f"model {client.model} not available at {args.url}. "
+            f"Pull it with: ollama pull {client.model}"
+        )
+    print(f"proposer: {client.model}")
+
+    obs = load_observation_desk(PROCESSED)
+    mig_edges = _load_jsonl(PROCESSED / "edges.jsonl", MigrationEdge)
+    events = load_events(PROCESSED / "events.jsonl")
+    clusters = _load_clusters()
+    pairs = _pair_candidates(obs, mig_edges)
+    print(f"inputs: {len(clusters)} clusters, {len(pairs)} pair candidates")
+
+    store = TrustStore()
+    result = EnrichmentResult(model=client.model)
+
+    enrich_event_attribution(
+        client, clusters, events, mig_edges, store, result, window_size=args.window
+    )
+    print(
+        f"event attribution: {result.proposals} proposals, "
+        f"{result.verified} verified, {result.rejected} rejected"
+    )
+    p0, v0 = result.proposals, result.verified
+
+    enrich_conceptual_couplings(
+        client, pairs, mig_edges, obs, store, result, window_size=args.window
+    )
+    print(
+        f"conceptual coupling: {result.proposals - p0} proposals, "
+        f"{result.verified - v0} verified"
+    )
+
+    hyp = f"llm_proposer:{client.model}"
+    post = store.get(hyp)
+    print(
+        f"{hyp}: mean={post.mean:.3f} trials={post.trials} "
+        f"({result.windows_failed}/{result.windows_run} windows failed)"
+    )
+
+    write_edges_jsonl(
+        result.verified_coupling_edges, OUT / "PHASE2B_LLM_EDGES.jsonl"
+    )
+    store.save(OUT / "PHASE2B_LLM_LEDGER.json")
+    (OUT / "PHASE2B_LLM_ENRICHMENT.json").write_text(
+        json.dumps(
+            {
+                "model": client.model,
+                "windows_run": result.windows_run,
+                "windows_failed": result.windows_failed,
+                "proposals": result.proposals,
+                "verified": result.verified,
+                "rejected": result.rejected,
+                "proposer_posterior": store.get(hyp).to_dict(),
+                "verified_event_attributions": result.verified_event_edges,
+                "n_verified_coupling_edges": len(result.verified_coupling_edges),
+            },
+            indent=2,
+        )
+        + "\n",
+        encoding="utf-8",
+    )
+    print(f"wrote {OUT / 'PHASE2B_LLM_ENRICHMENT.json'}")
+    print(f"wrote {OUT / 'PHASE2B_LLM_EDGES.jsonl'}")
+    print(f"wrote {OUT / 'PHASE2B_LLM_LEDGER.json'}")
+
+
+if __name__ == "__main__":
+    main()
