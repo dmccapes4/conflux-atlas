@@ -918,6 +918,7 @@ def anchor_drop_curves(
     min_points: int = 4,
     width_shapes: Sequence[str] = ("linear", "sqrt"),
     alpha: float = 0.20,
+    nuggets: dict[str, float] | None = None,
 ) -> dict[str, Any]:
     """E6b/E6c: leave-one-out over dense series → coverage vs anchor gap.
 
@@ -930,14 +931,16 @@ def anchor_drop_curves(
     for shape in width_shapes:
         rows: list[tuple[int, bool, float, float]] = []  # gap, hit, IS, width
         n_series = 0
-        for (_pid, _group), pts in sorted(series.items()):
+        for (_pid, group), pts in sorted(series.items()):
             if len(pts) < min_points:
                 continue
             n_series += 1
+            nug = (nuggets or {}).get(group, 0.0)
             for i, held in enumerate(pts):
                 support = [(p.year, p.share) for j, p in enumerate(pts) if j != i]
                 est = backfill_series(
-                    support, dynamics, years=[held.year], coverage=0.80, width_shape=shape
+                    support, dynamics, years=[held.year], coverage=0.80,
+                    width_shape=shape, nugget=nug,
                 )[0]
                 hit = est.lo <= held.share <= est.hi
                 sc = interval_score(held.share, est.lo, est.hi, alpha=alpha)
@@ -978,6 +981,8 @@ def bridge_block(
     loo: bool = False,
     width_shape: str = "linear",
     alpha: float = 0.20,
+    nugget: float = 0.0,
+    shock_windows: Sequence[tuple[int, int]] = (),
 ) -> dict[str, Any]:
     """E6a: one disaggregated bridge experiment (same- or cross-polity),
     scored with coverage + Wilson + interval score."""
@@ -993,7 +998,8 @@ def bridge_block(
         if not sup:
             continue
         est = backfill_series(
-            sup, dynamics, years=[a.year], coverage=0.80, width_shape=width_shape
+            sup, dynamics, years=[a.year], coverage=0.80, width_shape=width_shape,
+            nugget=nugget, shock_windows=shock_windows,
         )[0]
         share = float(a.shares.get(group, 0.0))
         n += 1
