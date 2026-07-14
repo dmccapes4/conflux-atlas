@@ -85,12 +85,20 @@ def _load_clusters() -> list[CovarianceCluster]:
     ]
 
 
-def _pair_candidates(obs, mig_edges) -> list[PairCandidate]:
+def _pair_candidates(
+    obs, mig_edges, *, max_complement: int | None = 40, max_definition: int | None = 30
+) -> list[PairCandidate]:
     """Candidate windows for job 2: real couplings mixed with decoys.
 
     The mix is deliberate — the proposer must separate true couplings
-    from lookalikes, otherwise its posterior is free.
+    from lookalikes, otherwise its posterior is free. ``max_*=None``
+    (--full) uncaps for the comprehensive Phase 3 population: all
+    group-combinations per measurement and all source-combinations per
+    polity-year-group.
     """
+    import itertools
+    from collections import defaultdict
+
     pairs: list[PairCandidate] = []
     seen: set[str] = set()
 
@@ -101,25 +109,27 @@ def _pair_candidates(obs, mig_edges) -> list[PairCandidate]:
         pairs.append(PairCandidate(pair_id=pid, kind_hint=hint, **kw))
 
     # (a) same source, polity, year, different groups → complement candidates
-    from collections import defaultdict
-
     by_spy = defaultdict(list)
     for o in obs:
         by_spy[(o.source_id, o.polity_id, o.year)].append(o)
+    n_comp = 0
     for (src, pid, year), rows in sorted(by_spy.items()):
         if len(rows) < 2:
             continue
-        a, b = sorted(rows, key=lambda o: o.group)[:2]
-        add(
-            f"cand|{src}|{pid}|{year}|{a.group}|{b.group}",
-            {
-                "series_a": {"source": src, "polity": pid, "group": a.group, "year": year},
-                "series_b": {"source": src, "polity": pid, "group": b.group, "year": year},
-            },
-            polity_a=pid, polity_b=pid, group_a=a.group, group_b=b.group,
-            source_a=src, source_b=src, year_a=year, year_b=year,
-        )
-        if len(pairs) >= 40:
+        rows = sorted(rows, key=lambda o: o.group)
+        combos = itertools.combinations(rows, 2) if max_complement is None else [rows[:2]]
+        for a, b in combos:
+            add(
+                f"cand|{src}|{pid}|{year}|{a.group}|{b.group}",
+                {
+                    "series_a": {"source": src, "polity": pid, "group": a.group, "year": year},
+                    "series_b": {"source": src, "polity": pid, "group": b.group, "year": year},
+                },
+                polity_a=pid, polity_b=pid, group_a=a.group, group_b=b.group,
+                source_a=src, source_b=src, year_a=year, year_b=year,
+            )
+            n_comp += 1
+        if max_complement is not None and n_comp >= max_complement:
             break
 
     # (b) same group across migration-edge polity pairs → conservation
@@ -161,18 +171,21 @@ def _pair_candidates(obs, mig_edges) -> list[PairCandidate]:
         srcs = sorted({o.source_id for o in rows})
         if len(srcs) < 2:
             continue
-        a, b = srcs[:2]
-        add(
-            f"cand|{a}|{b}|{pid}|{g}|{year}",
-            {
-                "series_a": {"source": a, "polity": pid, "group": g, "year": year},
-                "series_b": {"source": b, "polity": pid, "group": g, "year": year},
-            },
-            polity_a=pid, polity_b=pid, group_a=g, group_b=g,
-            source_a=a, source_b=b, year_a=year, year_b=year,
+        combos = (
+            itertools.combinations(srcs, 2) if max_definition is None else [srcs[:2]]
         )
-        n_def += 1
-        if n_def >= 30:
+        for a, b in combos:
+            add(
+                f"cand|{a}|{b}|{pid}|{g}|{year}",
+                {
+                    "series_a": {"source": a, "polity": pid, "group": g, "year": year},
+                    "series_b": {"source": b, "polity": pid, "group": g, "year": year},
+                },
+                polity_a=pid, polity_b=pid, group_a=g, group_b=g,
+                source_a=a, source_b=b, year_a=year, year_b=year,
+            )
+            n_def += 1
+        if max_definition is not None and n_def >= max_definition:
             break
 
     return pairs
@@ -183,6 +196,11 @@ def main() -> None:
     ap.add_argument("--model", default=None, help="ollama model name")
     ap.add_argument("--window", type=int, default=12)
     ap.add_argument("--url", default="http://localhost:11434")
+    ap.add_argument(
+        "--full",
+        action="store_true",
+        help="uncap pair candidates — the comprehensive Phase 3 population",
+    )
     args = ap.parse_args()
 
     client = OllamaClient(model=args.model or DEFAULT_MODEL, base_url=args.url)
@@ -197,27 +215,42 @@ def main() -> None:
     mig_edges = _load_jsonl(PROCESSED / "edges.jsonl", MigrationEdge)
     events = load_events(PROCESSED / "events.jsonl")
     clusters = _load_clusters()
-    pairs = _pair_candidates(obs, mig_edges)
-    print(f"inputs: {len(clusters)} clusters, {len(pairs)} pair candidates")
+    if args.full:
+        pairs = _pair_candidates(obs, mig_edges, max_complement=None, max_definition=None)
+    else:
+        pairs = _pair_candidates(obs, mig_edges)
+    n_windows = -(-len(pairs) // args.window) + -(-len(clusters) // args.window)
+    print(
+        f"inputs: {len(clusters)} clusters, {len(pairs)} pair candidates "
+        f"({'FULL' if args.full else 'pilot caps'}), ~{n_windows} windows",
+        flush=True,
+    )
+
+    def progress(done: int, total: int) -> None:
+        print(f"  window {done}/{total}", flush=True)
 
     store = TrustStore()
     result = EnrichmentResult(model=client.model)
 
     enrich_event_attribution(
-        client, clusters, events, mig_edges, store, result, window_size=args.window
+        client, clusters, events, mig_edges, store, result,
+        window_size=args.window, progress=progress,
     )
     print(
         f"event attribution: {result.proposals} proposals, "
-        f"{result.verified} verified, {result.rejected} rejected"
+        f"{result.verified} verified, {result.rejected} rejected",
+        flush=True,
     )
     p0, v0 = result.proposals, result.verified
 
     enrich_conceptual_couplings(
-        client, pairs, mig_edges, obs, store, result, window_size=args.window
+        client, pairs, mig_edges, obs, store, result,
+        window_size=args.window, progress=progress,
     )
     print(
         f"conceptual coupling: {result.proposals - p0} proposals, "
-        f"{result.verified - v0} verified"
+        f"{result.verified - v0} verified",
+        flush=True,
     )
 
     hyp = f"llm_proposer:{client.model}"
