@@ -102,3 +102,14 @@ Mid-century (1930–1990) share anchors remain the highest-leverage single inges
 | 6 | E6a same-polity bridge + E8 ingest as it lands | ongoing | report v2 |
 
 **Standing rules:** `PREREGISTRATION` untouched; the 1975 tape gets exactly one confirmatory run per frozen candidate; every number ships with n and an interval; a miss is a result.
+
+---
+
+## Changelog
+
+**14 July 2026 — executed (results: `REPORT_PHASE3_EXPERIMENTS.md`).**
+
+- *Amendment (declared before any confirmatory run):* selection on cut-1950/1990 tapes would leak — their targets are the same realized 2005–2020 rows as the 1975 tape's. Replaced with a deterministic series split: sha1(polity|group) even → selection, odd → confirmatory. Outcome rows disjoint by construction.
+- *E3 frozen winner:* **w3** (conformal inflation of the w0 shape; λ = 2.5/3.0/1.0 for persistence/reversion/ar1, fit on selection-half pre-cut folds). Selection rule as pre-registered: min mean |coverage−0.80| across cuts {1975, 1990}, tie-break mean IS. One confirmatory shot taken; result 0.681 [0.564, 0.779] — improved, still a (smaller) miss.
+- *E4 verdict:* analog beats all baselines on the primary metric (nominal win under the frozen rule); paired bootstrap CI spans zero — not resolved at n=64. Ensemble entered and lost.
+- E8 (mid-century ingest) remains open.

@@ -1,5 +1,7 @@
 # REPORT — Phase 3 Backtest & Bridge (1975 cut)
 
+> **Extended (14 July 2026):** the expanded experimentation program (`PHASE3_EXPERIMENT_PLAN.md`) diagnosed the misses below — coverage miss = train staleness (E1), shock split degeneracy = non-polity-aware tagging (E5), bridge 0.297 = pooled cross-polity stress test (E6a) — and repaired what could be repaired without touching this tape. Results: [`REPORT_PHASE3_EXPERIMENTS.md`](REPORT_PHASE3_EXPERIMENTS.md). This report is preserved as the first, pre-registered baseline run.
+
 **Date:** 14 July 2026  
 **Protocol:** Pre-registered banded share forecasts (`PREREGISTRATION` in `conflux/backtest.py`) + sparsity→simulation bridge (`conflux/bridge.py`)  
 **Artifacts:** `data-validation-reports/PHASE3_BACKTEST.json`, `PHASE3_BRIDGE.json`  

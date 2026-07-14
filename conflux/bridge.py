@@ -90,8 +90,15 @@ def backfill_series(
     *,
     years: Sequence[int],
     coverage: float = 0.80,
+    width_shape: str = "linear",
 ) -> list[BandEstimate]:
-    """Estimate shares at ``years``; anchors dominate, bands widen with gap."""
+    """Estimate shares at ``years``; anchors dominate, bands widen with gap.
+
+    ``width_shape``: "linear" (half ∝ gap, the Phase 3 default) or "sqrt"
+    (half ∝ sqrt(gap decades) — random-walk scaling, E6c ablation).
+    """
+    if width_shape not in ("linear", "sqrt"):
+        raise ValueError(f"unknown width_shape: {width_shape}")
     anchors = sorted((int(y), float(s)) for y, s in anchor_points)
     if not anchors:
         raise ValueError("anchor_points must be non-empty")
@@ -119,7 +126,11 @@ def backfill_series(
                 point = nearest_s + dynamics.rate_mean * decades
             # Width grows with gap (monotone in nearest_anchor_gap).
             # rate_std is already /decade; scale by decades of distance.
-            half = z * sigma * (gap / 10.0)
+            decades = gap / 10.0
+            if width_shape == "sqrt":
+                half = z * sigma * math.sqrt(decades)
+            else:
+                half = z * sigma * decades
 
         point = _clip01(point)
         lo = _clip01(point - half)

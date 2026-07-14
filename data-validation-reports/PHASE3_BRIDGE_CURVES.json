@@ -1,0 +1,156 @@
+{
+  "experiments": {
+    "karpat_loo_linear": {
+      "n": 3,
+      "n_excluded_contested": 0,
+      "coverage_observed": 0.6666666666666666,
+      "coverage_wilson95": [
+        0.208,
+        0.939
+      ],
+      "mean_interval_score": 0.2830863446892328,
+      "width_shape": "linear",
+      "lane": "same_polity"
+    },
+    "ottoman_provinces_linear": {
+      "n": 34,
+      "n_excluded_contested": 0,
+      "coverage_observed": 0.2647058823529412,
+      "coverage_wilson95": [
+        0.146,
+        0.431
+      ],
+      "mean_interval_score": 0.839031828650568,
+      "width_shape": "linear",
+      "lane": "cross_polity_stress_test"
+    },
+    "karpat_loo_sqrt": {
+      "n": 3,
+      "n_excluded_contested": 0,
+      "coverage_observed": 0.3333333333333333,
+      "coverage_wilson95": [
+        0.061,
+        0.792
+      ],
+      "mean_interval_score": 0.3675805667542978,
+      "width_shape": "sqrt",
+      "lane": "same_polity"
+    },
+    "ottoman_provinces_sqrt": {
+      "n": 34,
+      "n_excluded_contested": 0,
+      "coverage_observed": 0.20588235294117646,
+      "coverage_wilson95": [
+        0.103,
+        0.368
+      ],
+      "mean_interval_score": 0.9375799270383834,
+      "width_shape": "sqrt",
+      "lane": "cross_polity_stress_test"
+    }
+  },
+  "anchor_drop_curves": {
+    "linear": {
+      "n_series": 37,
+      "n_holdouts": 282,
+      "coverage_overall": 0.5886524822695035,
+      "mean_interval_score": 0.2800923909056148,
+      "by_gap": {
+        "1-5": {
+          "n": 210,
+          "coverage_observed": 0.49523809523809526,
+          "coverage_wilson95": [
+            0.428,
+            0.562
+          ],
+          "mean_interval_score": 0.21835800806551076,
+          "mean_width": 0.01811455587810947
+        },
+        "6-10": {
+          "n": 15,
+          "coverage_observed": 0.6666666666666666,
+          "coverage_wilson95": [
+            0.417,
+            0.848
+          ],
+          "mean_interval_score": 0.2827703341782903,
+          "mean_width": 0.05397902235797193
+        },
+        "11-25": {
+          "n": 6,
+          "coverage_observed": 0.8333333333333334,
+          "coverage_wilson95": [
+            0.436,
+            0.97
+          ],
+          "mean_interval_score": 0.3944864888842386,
+          "mean_width": 0.09919586270020443
+        },
+        "26-50": {
+          "n": 51,
+          "coverage_observed": 0.9215686274509803,
+          "coverage_wilson95": [
+            0.815,
+            0.969
+          ],
+          "mean_interval_score": 0.5200470312871828,
+          "mean_width": 0.2359265850423696
+        },
+        "51+": {
+          "n": 0
+        }
+      }
+    },
+    "sqrt": {
+      "n_series": 37,
+      "n_holdouts": 282,
+      "coverage_overall": 0.6666666666666666,
+      "mean_interval_score": 0.2635972428299677,
+      "by_gap": {
+        "1-5": {
+          "n": 210,
+          "coverage_observed": 0.6238095238095238,
+          "coverage_wilson95": [
+            0.557,
+            0.687
+          ],
+          "mean_interval_score": 0.19902215648294078,
+          "mean_width": 0.030749501993231277
+        },
+        "6-10": {
+          "n": 15,
+          "coverage_observed": 0.6666666666666666,
+          "coverage_wilson95": [
+            0.417,
+            0.848
+          ],
+          "mean_interval_score": 0.2803923773935334,
+          "mean_width": 0.05556432688114316
+        },
+        "11-25": {
+          "n": 6,
+          "coverage_observed": 0.8333333333333334,
+          "coverage_wilson95": [
+            0.436,
+            0.97
+          ],
+          "mean_interval_score": 0.3981271090899863,
+          "mean_width": 0.06959379945383057
+        },
+        "26-50": {
+          "n": 51,
+          "coverage_observed": 0.8235294117647058,
+          "coverage_wilson95": [
+            0.697,
+            0.904
+          ],
+          "mean_interval_score": 0.5087278686507926,
+          "mean_width": 0.12259623471144081
+        },
+        "51+": {
+          "n": 0
+        }
+      }
+    }
+  }
+}
