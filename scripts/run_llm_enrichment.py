@@ -30,6 +30,7 @@ from __future__ import annotations
 import argparse
 import json
 import sys
+import time
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -209,7 +210,7 @@ def main() -> None:
             f"model {client.model} not available at {args.url}. "
             f"Pull it with: ollama pull {client.model}"
         )
-    print(f"proposer: {client.model}")
+    print(f"🤖 proposer: {client.model}")
 
     obs = load_observation_desk(PROCESSED)
     mig_edges = _load_jsonl(PROCESSED / "edges.jsonl", MigrationEdge)
@@ -221,42 +222,74 @@ def main() -> None:
         pairs = _pair_candidates(obs, mig_edges)
     n_windows = -(-len(pairs) // args.window) + -(-len(clusters) // args.window)
     print(
-        f"inputs: {len(clusters)} clusters, {len(pairs)} pair candidates "
-        f"({'FULL' if args.full else 'pilot caps'}), ~{n_windows} windows",
+        f"📥 inputs: {len(clusters)} clusters, {len(pairs)} pair candidates "
+        f"({'FULL' if args.full else 'pilot caps'}), {n_windows} windows total",
         flush=True,
     )
 
-    def progress(done: int, total: int) -> None:
-        print(f"  window {done}/{total}", flush=True)
+    run_t0 = time.monotonic()
+    call_times: list[float] = []
+
+    def _fmt(seconds: float) -> str:
+        seconds = max(0.0, seconds)
+        m, s = divmod(int(round(seconds)), 60)
+        return f"{m}m{s:02d}s" if m else f"{s}s"
+
+    def make_progress(job: str, windows_before: int):
+        """Per-window line with call time, run elapsed, and whole-run ETA."""
+
+        def progress(done: int, total: int, dt: float) -> None:
+            call_times.append(dt)
+            avg = sum(call_times) / len(call_times)
+            done_overall = windows_before + done
+            eta = avg * (n_windows - done_overall)
+            print(
+                f"⏱️  [{job}] window {done}/{total}  {dt:.1f}s  "
+                f"(avg {avg:.1f}s · elapsed {_fmt(time.monotonic() - run_t0)} · "
+                f"ETA {_fmt(eta)})",
+                flush=True,
+            )
+
+        return progress
 
     store = TrustStore()
     result = EnrichmentResult(model=client.model)
 
+    n_cluster_windows = -(-len(clusters) // args.window)
     enrich_event_attribution(
         client, clusters, events, mig_edges, store, result,
-        window_size=args.window, progress=progress,
+        window_size=args.window, progress=make_progress("events", 0),
     )
     print(
-        f"event attribution: {result.proposals} proposals, "
-        f"{result.verified} verified, {result.rejected} rejected",
+        f"🗓️  event attribution: {result.proposals} proposals, "
+        f"{result.verified} verified, {result.rejected} rejected, "
+        f"{result.abstained} abstained",
         flush=True,
     )
-    p0, v0 = result.proposals, result.verified
+    p0, v0, a0 = result.proposals, result.verified, result.abstained
 
     enrich_conceptual_couplings(
         client, pairs, mig_edges, obs, store, result,
-        window_size=args.window, progress=progress,
+        window_size=args.window, progress=make_progress("couplings", n_cluster_windows),
     )
     print(
-        f"conceptual coupling: {result.proposals - p0} proposals, "
-        f"{result.verified - v0} verified",
+        f"🔗 conceptual coupling: {result.proposals - p0} proposals, "
+        f"{result.verified - v0} verified, {result.abstained - a0} abstained",
+        flush=True,
+    )
+    print(
+        f"🏁 llm total: {len(call_times)} calls, "
+        f"avg {sum(call_times) / len(call_times):.1f}s/call, "
+        f"run time {_fmt(time.monotonic() - run_t0)}"
+        if call_times
+        else "🏁 no llm calls made",
         flush=True,
     )
 
     hyp = f"llm_proposer:{client.model}"
     post = store.get(hyp)
     print(
-        f"{hyp}: mean={post.mean:.3f} trials={post.trials} "
+        f"📊 {hyp}: mean={post.mean:.3f} trials={post.trials} "
         f"({result.windows_failed}/{result.windows_run} windows failed)"
     )
 
@@ -273,18 +306,27 @@ def main() -> None:
                 "proposals": result.proposals,
                 "verified": result.verified,
                 "rejected": result.rejected,
+                "abstained": result.abstained,
                 "proposer_posterior": store.get(hyp).to_dict(),
                 "verified_event_attributions": result.verified_event_edges,
                 "n_verified_coupling_edges": len(result.verified_coupling_edges),
+                "timing": {
+                    "n_calls": len(call_times),
+                    "avg_call_seconds": round(sum(call_times) / len(call_times), 2)
+                    if call_times
+                    else None,
+                    "max_call_seconds": round(max(call_times), 2) if call_times else None,
+                    "total_run_seconds": round(time.monotonic() - run_t0, 2),
+                },
             },
             indent=2,
         )
         + "\n",
         encoding="utf-8",
     )
-    print(f"wrote {OUT / 'PHASE2B_LLM_ENRICHMENT.json'}")
-    print(f"wrote {OUT / 'PHASE2B_LLM_EDGES.jsonl'}")
-    print(f"wrote {OUT / 'PHASE2B_LLM_LEDGER.json'}")
+    print(f"💾 wrote {OUT / 'PHASE2B_LLM_ENRICHMENT.json'}")
+    print(f"💾 wrote {OUT / 'PHASE2B_LLM_EDGES.jsonl'}")
+    print(f"💾 wrote {OUT / 'PHASE2B_LLM_LEDGER.json'}")
 
 
 if __name__ == "__main__":
