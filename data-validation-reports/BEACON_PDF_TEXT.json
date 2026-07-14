@@ -1,0 +1,957 @@
+{
+  "pdfs": 86,
+  "born_digital": 85,
+  "needs_ocr": 1,
+  "error": 0,
+  "total_chars_extracted": 21567612,
+  "min_chars_per_page": 200,
+  "ocr_tool_available": null,
+  "by_beacon": {
+    "abbasid_conversion_750_1258": {
+      "pdfs": 4,
+      "born_digital": 4,
+      "needs_ocr": 0,
+      "error": 0
+    },
+    "arab_israeli_jewish_exodus_1948_1951": {
+      "pdfs": 8,
+      "born_digital": 8,
+      "needs_ocr": 0,
+      "error": 0
+    },
+    "crusades_1095_1291": {
+      "pdfs": 2,
+      "born_digital": 2,
+      "needs_ocr": 0,
+      "error": 0
+    },
+    "greco_turkish_exchange_1914_1923": {
+      "pdfs": 8,
+      "born_digital": 7,
+      "needs_ocr": 1,
+      "error": 0
+    },
+    "iranian_revolution_1979": {
+      "pdfs": 6,
+      "born_digital": 6,
+      "needs_ocr": 0,
+      "error": 0
+    },
+    "lebanese_civil_war_1975_1990": {
+      "pdfs": 7,
+      "born_digital": 7,
+      "needs_ocr": 0,
+      "error": 0
+    },
+    "mongol_mamluk_1258_1517": {
+      "pdfs": 2,
+      "born_digital": 2,
+      "needs_ocr": 0,
+      "error": 0
+    },
+    "muhammad_arabia_unification_610_632": {
+      "pdfs": 6,
+      "born_digital": 6,
+      "needs_ocr": 0,
+      "error": 0
+    },
+    "ottoman_peak_1453_1683": {
+      "pdfs": 8,
+      "born_digital": 8,
+      "needs_ocr": 0,
+      "error": 0
+    },
+    "ottoman_rise_1299_1683": {
+      "pdfs": 7,
+      "born_digital": 7,
+      "needs_ocr": 0,
+      "error": 0
+    },
+    "ottoman_tanzimat_1800_1914": {
+      "pdfs": 6,
+      "born_digital": 6,
+      "needs_ocr": 0,
+      "error": 0
+    },
+    "rashidun_conquests_632_661": {
+      "pdfs": 5,
+      "born_digital": 5,
+      "needs_ocr": 0,
+      "error": 0
+    },
+    "syrian_civil_war_refugees_2011_present": {
+      "pdfs": 12,
+      "born_digital": 12,
+      "needs_ocr": 0,
+      "error": 0
+    },
+    "umayyad_expansion_661_750": {
+      "pdfs": 5,
+      "born_digital": 5,
+      "needs_ocr": 0,
+      "error": 0
+    }
+  },
+  "files": [
+    {
+      "beacon": "abbasid_conversion_750_1258",
+      "pdf": "data/raw/beacons/abbasid_conversion_750_1258/bulliet_conversion_social_change_lecture_12d06584.pdf",
+      "sidecar": "data/raw/beacons/abbasid_conversion_750_1258/_text/bulliet_conversion_social_change_lecture_12d06584.txt",
+      "status": "born_digital",
+      "pages": 1,
+      "chars": 1596,
+      "mean_chars_per_page": 1596.0,
+      "textless_pages": 0
+    },
+    {
+      "beacon": "abbasid_conversion_750_1258",
+      "pdf": "data/raw/beacons/abbasid_conversion_750_1258/fentress_2012_islamizing_berber_lifestyles_682fe293.pdf",
+      "sidecar": "data/raw/beacons/abbasid_conversion_750_1258/_text/fentress_2012_islamizing_berber_lifestyles_682fe293.txt",
+      "status": "born_digital",
+      "pages": 26,
+      "chars": 59176,
+      "mean_chars_per_page": 2276.0,
+      "textless_pages": 0
+    },
+    {
+      "beacon": "abbasid_conversion_750_1258",
+      "pdf": "data/raw/beacons/abbasid_conversion_750_1258/fenwick_2023_conquest_to_conversion_north_africa_ff263db2.pdf",
+      "sidecar": "data/raw/beacons/abbasid_conversion_750_1258/_text/fenwick_2023_conquest_to_conversion_north_africa_ff263db2.txt",
+      "status": "born_digital",
+      "pages": 27,
+      "chars": 80259,
+      "mean_chars_per_page": 2972.6,
+      "textless_pages": 0
+    },
+    {
+      "beacon": "abbasid_conversion_750_1258",
+      "pdf": "data/raw/beacons/abbasid_conversion_750_1258/wood_christians_middle_east_600_1000_3e3f21db.pdf",
+      "sidecar": "data/raw/beacons/abbasid_conversion_750_1258/_text/wood_christians_middle_east_600_1000_3e3f21db.txt",
+      "status": "born_digital",
+      "pages": 28,
+      "chars": 100336,
+      "mean_chars_per_page": 3583.4,
+      "textless_pages": 0
+    },
+    {
+      "beacon": "arab_israeli_jewish_exodus_1948_1951",
+      "pdf": "data/raw/beacons/arab_israeli_jewish_exodus_1948_1951/ajyb_1940_world_jewish_population_prewar_baseline_f68c168a.pdf",
+      "sidecar": "data/raw/beacons/arab_israeli_jewish_exodus_1948_1951/_text/ajyb_1940_world_jewish_population_prewar_baseline_f68c168a.txt",
+      "status": "born_digital",
+      "pages": 44,
+      "chars": 71172,
+      "mean_chars_per_page": 1617.5,
+      "textless_pages": 0
+    },
+    {
+      "beacon": "arab_israeli_jewish_exodus_1948_1951",
+      "pdf": "data/raw/beacons/arab_israeli_jewish_exodus_1948_1951/ajyb_1946_statistics_jews_world_postwar_baseline_73038667.pdf",
+      "sidecar": "data/raw/beacons/arab_israeli_jewish_exodus_1948_1951/_text/ajyb_1946_statistics_jews_world_postwar_baseline_73038667.txt",
+      "status": "born_digital",
+      "pages": 20,
+      "chars": 28474,
+      "mean_chars_per_page": 1423.7,
+      "textless_pages": 0
+    },
+    {
+      "beacon": "arab_israeli_jewish_exodus_1948_1951",
+      "pdf": "data/raw/beacons/arab_israeli_jewish_exodus_1948_1951/ajyb_1949_world_jewish_population_shapiro_sapir_66fe9938.pdf",
+      "sidecar": "data/raw/beacons/arab_israeli_jewish_exodus_1948_1951/_text/ajyb_1949_world_jewish_population_shapiro_sapir_66fe9938.txt",
+      "status": "born_digital",
+      "pages": 6,
+      "chars": 12310,
+      "mean_chars_per_page": 2051.7,
+      "textless_pages": 0
+    },
+    {
+      "beacon": "arab_israeli_jewish_exodus_1948_1951",
+      "pdf": "data/raw/beacons/arab_israeli_jewish_exodus_1948_1951/iza_dp89_israel_immigration_1948_1951_cbs_ebdf0b32.pdf",
+      "sidecar": "data/raw/beacons/arab_israeli_jewish_exodus_1948_1951/_text/iza_dp89_israel_immigration_1948_1951_cbs_ebdf0b32.txt",
+      "status": "born_digital",
+      "pages": 64,
+      "chars": 148137,
+      "mean_chars_per_page": 2314.6,
+      "textless_pages": 0
+    },
+    {
+      "beacon": "arab_israeli_jewish_exodus_1948_1951",
+      "pdf": "data/raw/beacons/arab_israeli_jewish_exodus_1948_1951/jewish_agency_immigration_by_origin_1948_1951_zubida_6e68f30f.pdf",
+      "sidecar": "data/raw/beacons/arab_israeli_jewish_exodus_1948_1951/_text/jewish_agency_immigration_by_origin_1948_1951_zubida_6e68f30f.txt",
+      "status": "born_digital",
+      "pages": 30,
+      "chars": 45808,
+      "mean_chars_per_page": 1526.9,
+      "textless_pages": 0
+    },
+    {
+      "beacon": "arab_israeli_jewish_exodus_1948_1951",
+      "pdf": "data/raw/beacons/arab_israeli_jewish_exodus_1948_1951/un_ga_res_302_unrwa_establishment_1949_bc5c747c.pdf",
+      "sidecar": "data/raw/beacons/arab_israeli_jewish_exodus_1948_1951/_text/un_ga_res_302_unrwa_establishment_1949_bc5c747c.txt",
+      "status": "born_digital",
+      "pages": 3,
+      "chars": 15706,
+      "mean_chars_per_page": 5235.3,
+      "textless_pages": 0
+    },
+    {
+      "beacon": "arab_israeli_jewish_exodus_1948_1951",
+      "pdf": "data/raw/beacons/arab_israeli_jewish_exodus_1948_1951/unstats_israel_cbs_founding_demography_immigration_9033d612.pdf",
+      "sidecar": "data/raw/beacons/arab_israeli_jewish_exodus_1948_1951/_text/unstats_israel_cbs_founding_demography_immigration_9033d612.txt",
+      "status": "born_digital",
+      "pages": 9,
+      "chars": 30460,
+      "mean_chars_per_page": 3384.4,
+      "textless_pages": 0
+    },
+    {
+      "beacon": "arab_israeli_jewish_exodus_1948_1951",
+      "pdf": "data/raw/beacons/arab_israeli_jewish_exodus_1948_1951/wjp_dellapergola_ajyb_2020_historical_tables_cc5ed635.pdf",
+      "sidecar": "data/raw/beacons/arab_israeli_jewish_exodus_1948_1951/_text/wjp_dellapergola_ajyb_2020_historical_tables_cc5ed635.txt",
+      "status": "born_digital",
+      "pages": 102,
+      "chars": 295195,
+      "mean_chars_per_page": 2894.1,
+      "textless_pages": 3
+    },
+    {
+      "beacon": "crusades_1095_1291",
+      "pdf": "data/raw/beacons/crusades_1095_1291/ellenblum_publications_list_93643a63.pdf",
+      "sidecar": "data/raw/beacons/crusades_1095_1291/_text/ellenblum_publications_list_93643a63.txt",
+      "status": "born_digital",
+      "pages": 7,
+      "chars": 18085,
+      "mean_chars_per_page": 2583.6,
+      "textless_pages": 0
+    },
+    {
+      "beacon": "crusades_1095_1291",
+      "pdf": "data/raw/beacons/crusades_1095_1291/jotischky_franks_natives_crusader_states_be0660b7.pdf",
+      "sidecar": "data/raw/beacons/crusades_1095_1291/_text/jotischky_franks_natives_crusader_states_be0660b7.txt",
+      "status": "born_digital",
+      "pages": 10,
+      "chars": 40927,
+      "mean_chars_per_page": 4092.7,
+      "textless_pages": 0
+    },
+    {
+      "beacon": "greco_turkish_exchange_1914_1923",
+      "pdf": "data/raw/beacons/greco_turkish_exchange_1914_1923/elstat_greece_refugee_census_1923_commemorative_fd69c02f.pdf",
+      "sidecar": "data/raw/beacons/greco_turkish_exchange_1914_1923/_text/elstat_greece_refugee_census_1923_commemorative_fd69c02f.txt",
+      "status": "born_digital",
+      "pages": 84,
+      "chars": 26961,
+      "mean_chars_per_page": 321.0,
+      "textless_pages": 62
+    },
+    {
+      "beacon": "greco_turkish_exchange_1914_1923",
+      "pdf": "data/raw/beacons/greco_turkish_exchange_1914_1923/elstat_greece_refugee_census_1923_original_9121cba3.pdf",
+      "sidecar": "data/raw/beacons/greco_turkish_exchange_1914_1923/_text/elstat_greece_refugee_census_1923_original_9121cba3.txt",
+      "status": "needs_ocr",
+      "pages": 71,
+      "chars": 0,
+      "mean_chars_per_page": 0.0,
+      "textless_pages": 71
+    },
+    {
+      "beacon": "greco_turkish_exchange_1914_1923",
+      "pdf": "data/raw/beacons/greco_turkish_exchange_1914_1923/ln_ts_v32_lausanne_exchange_convention_1923_f9b890e0.pdf",
+      "sidecar": "data/raw/beacons/greco_turkish_exchange_1914_1923/_text/ln_ts_v32_lausanne_exchange_convention_1923_f9b890e0.txt",
+      "status": "born_digital",
+      "pages": 424,
+      "chars": 1006681,
+      "mean_chars_per_page": 2374.2,
+      "textless_pages": 25
+    },
+    {
+      "beacon": "greco_turkish_exchange_1914_1923",
+      "pdf": "data/raw/beacons/greco_turkish_exchange_1914_1923/ln_ts_v68_greece_turkey_exchange_facilitation_1926_d607f2ec.pdf",
+      "sidecar": "data/raw/beacons/greco_turkish_exchange_1914_1923/_text/ln_ts_v68_greece_turkey_exchange_facilitation_1926_d607f2ec.txt",
+      "status": "born_digital",
+      "pages": 464,
+      "chars": 984262,
+      "mean_chars_per_page": 2121.3,
+      "textless_pages": 30
+    },
+    {
+      "beacon": "greco_turkish_exchange_1914_1923",
+      "pdf": "data/raw/beacons/greco_turkish_exchange_1914_1923/pcij_b10_exchange_populations_advisory_opinion_1925_b2869295.pdf",
+      "sidecar": "data/raw/beacons/greco_turkish_exchange_1914_1923/_text/pcij_b10_exchange_populations_advisory_opinion_1925_b2869295.txt",
+      "status": "born_digital",
+      "pages": 43,
+      "chars": 93590,
+      "mean_chars_per_page": 2176.5,
+      "textless_pages": 0
+    },
+    {
+      "beacon": "greco_turkish_exchange_1914_1923",
+      "pdf": "data/raw/beacons/greco_turkish_exchange_1914_1923/pcij_b10_exchange_populations_mixed_commission_annex_1924_6707309c.pdf",
+      "sidecar": "data/raw/beacons/greco_turkish_exchange_1914_1923/_text/pcij_b10_exchange_populations_mixed_commission_annex_1924_6707309c.txt",
+      "status": "born_digital",
+      "pages": 4,
+      "chars": 7957,
+      "mean_chars_per_page": 1989.2,
+      "textless_pages": 0
+    },
+    {
+      "beacon": "greco_turkish_exchange_1914_1923",
+      "pdf": "data/raw/beacons/greco_turkish_exchange_1914_1923/pcij_b16_greco_turkish_agreement_interpretation_1928_b638f12e.pdf",
+      "sidecar": "data/raw/beacons/greco_turkish_exchange_1914_1923/_text/pcij_b16_greco_turkish_agreement_interpretation_1928_b638f12e.txt",
+      "status": "born_digital",
+      "pages": 49,
+      "chars": 102649,
+      "mean_chars_per_page": 2094.9,
+      "textless_pages": 0
+    },
+    {
+      "beacon": "greco_turkish_exchange_1914_1923",
+      "pdf": "data/raw/beacons/greco_turkish_exchange_1914_1923/sfetas_lausanne_legacy_cites_hirschon_2003_456612c1.pdf",
+      "sidecar": "data/raw/beacons/greco_turkish_exchange_1914_1923/_text/sfetas_lausanne_legacy_cites_hirschon_2003_456612c1.txt",
+      "status": "born_digital",
+      "pages": 25,
+      "chars": 69716,
+      "mean_chars_per_page": 2788.6,
+      "textless_pages": 0
+    },
+    {
+      "beacon": "iranian_revolution_1979",
+      "pdf": "data/raw/beacons/iranian_revolution_1979/iran_sci_census_form_1996_5fc381a0.pdf",
+      "sidecar": "data/raw/beacons/iranian_revolution_1979/_text/iran_sci_census_form_1996_5fc381a0.txt",
+      "status": "born_digital",
+      "pages": 3,
+      "chars": 9909,
+      "mean_chars_per_page": 3303.0,
+      "textless_pages": 0
+    },
+    {
+      "beacon": "iranian_revolution_1979",
+      "pdf": "data/raw/beacons/iranian_revolution_1979/iran_sci_census_results_2011_62b6e2e6.pdf",
+      "sidecar": "data/raw/beacons/iranian_revolution_1979/_text/iran_sci_census_results_2011_62b6e2e6.txt",
+      "status": "born_digital",
+      "pages": 59,
+      "chars": 29278,
+      "mean_chars_per_page": 496.2,
+      "textless_pages": 0
+    },
+    {
+      "beacon": "iranian_revolution_1979",
+      "pdf": "data/raw/beacons/iranian_revolution_1979/isdkandaryan_armenians_iran_2019_679a0973.pdf",
+      "sidecar": "data/raw/beacons/iranian_revolution_1979/_text/isdkandaryan_armenians_iran_2019_679a0973.txt",
+      "status": "born_digital",
+      "pages": 14,
+      "chars": 44085,
+      "mean_chars_per_page": 3148.9,
+      "textless_pages": 0
+    },
+    {
+      "beacon": "iranian_revolution_1979",
+      "pdf": "data/raw/beacons/iranian_revolution_1979/kamrava_minority_demographics_c9186e8b.pdf",
+      "sidecar": "data/raw/beacons/iranian_revolution_1979/_text/kamrava_minority_demographics_c9186e8b.txt",
+      "status": "born_digital",
+      "pages": 30,
+      "chars": 101897,
+      "mean_chars_per_page": 3396.6,
+      "textless_pages": 0
+    },
+    {
+      "beacon": "iranian_revolution_1979",
+      "pdf": "data/raw/beacons/iranian_revolution_1979/sanasarian_ajiss_review_98307c5f.pdf",
+      "sidecar": "data/raw/beacons/iranian_revolution_1979/_text/sanasarian_ajiss_review_98307c5f.txt",
+      "status": "born_digital",
+      "pages": 5,
+      "chars": 13279,
+      "mean_chars_per_page": 2655.8,
+      "textless_pages": 0
+    },
+    {
+      "beacon": "iranian_revolution_1979",
+      "pdf": "data/raw/beacons/iranian_revolution_1979/sanasarian_religious_minorities_2000_frontmatter_dab3871b.pdf",
+      "sidecar": "data/raw/beacons/iranian_revolution_1979/_text/sanasarian_religious_minorities_2000_frontmatter_dab3871b.txt",
+      "status": "born_digital",
+      "pages": 19,
+      "chars": 26221,
+      "mean_chars_per_page": 1380.1,
+      "textless_pages": 0
+    },
+    {
+      "beacon": "lebanese_civil_war_1975_1990",
+      "pdf": "data/raw/beacons/lebanese_civil_war_1975_1990/hanafi_rsc_no_refuge_2010_45219e91.pdf",
+      "sidecar": "data/raw/beacons/lebanese_civil_war_1975_1990/_text/hanafi_rsc_no_refuge_2010_45219e91.txt",
+      "status": "born_digital",
+      "pages": 36,
+      "chars": 100035,
+      "mean_chars_per_page": 2778.8,
+      "textless_pages": 0
+    },
+    {
+      "beacon": "lebanese_civil_war_1975_1990",
+      "pdf": "data/raw/beacons/lebanese_civil_war_1975_1990/irfan_jprs_unrwa_lebanon_376230eb.pdf",
+      "sidecar": "data/raw/beacons/lebanese_civil_war_1975_1990/_text/irfan_jprs_unrwa_lebanon_376230eb.txt",
+      "status": "born_digital",
+      "pages": 8,
+      "chars": 29986,
+      "mean_chars_per_page": 3748.2,
+      "textless_pages": 0
+    },
+    {
+      "beacon": "lebanese_civil_war_1975_1990",
+      "pdf": "data/raw/beacons/lebanese_civil_war_1975_1990/labaki_abu_rjaili_2005_1d092287.pdf",
+      "sidecar": "data/raw/beacons/lebanese_civil_war_1975_1990/_text/labaki_abu_rjaili_2005_1d092287.txt",
+      "status": "born_digital",
+      "pages": 26,
+      "chars": 74295,
+      "mean_chars_per_page": 2857.5,
+      "textless_pages": 0
+    },
+    {
+      "beacon": "lebanese_civil_war_1975_1990",
+      "pdf": "data/raw/beacons/lebanese_civil_war_1975_1990/labaki_mpra_19219_ab1ffe0b.pdf",
+      "sidecar": "data/raw/beacons/lebanese_civil_war_1975_1990/_text/labaki_mpra_19219_ab1ffe0b.txt",
+      "status": "born_digital",
+      "pages": 46,
+      "chars": 96556,
+      "mean_chars_per_page": 2099.0,
+      "textless_pages": 0
+    },
+    {
+      "beacon": "lebanese_civil_war_1975_1990",
+      "pdf": "data/raw/beacons/lebanese_civil_war_1975_1990/labaki_undesa_egm_2006_35813161.pdf",
+      "sidecar": "data/raw/beacons/lebanese_civil_war_1975_1990/_text/labaki_undesa_egm_2006_35813161.txt",
+      "status": "born_digital",
+      "pages": 27,
+      "chars": 75764,
+      "mean_chars_per_page": 2806.1,
+      "textless_pages": 0
+    },
+    {
+      "beacon": "lebanese_civil_war_1975_1990",
+      "pdf": "data/raw/beacons/lebanese_civil_war_1975_1990/michalak_palestinians_civil_war_1975_fdcb79cf.pdf",
+      "sidecar": "data/raw/beacons/lebanese_civil_war_1975_1990/_text/michalak_palestinians_civil_war_1975_fdcb79cf.txt",
+      "status": "born_digital",
+      "pages": 19,
+      "chars": 55142,
+      "mean_chars_per_page": 2902.2,
+      "textless_pages": 0
+    },
+    {
+      "beacon": "lebanese_civil_war_1975_1990",
+      "pdf": "data/raw/beacons/lebanese_civil_war_1975_1990/verdeil_ifpo_sommaire_cco_49_e8e6f8dd.pdf",
+      "sidecar": "data/raw/beacons/lebanese_civil_war_1975_1990/_text/verdeil_ifpo_sommaire_cco_49_e8e6f8dd.txt",
+      "status": "born_digital",
+      "pages": 6,
+      "chars": 19488,
+      "mean_chars_per_page": 3248.0,
+      "textless_pages": 0
+    },
+    {
+      "beacon": "mongol_mamluk_1258_1517",
+      "pdf": "data/raw/beacons/mongol_mamluk_1258_1517/dols_1974_ibn_alwardi_plague_c9af913a.pdf",
+      "sidecar": "data/raw/beacons/mongol_mamluk_1258_1517/_text/dols_1974_ibn_alwardi_plague_c9af913a.txt",
+      "status": "born_digital",
+      "pages": 20,
+      "chars": 61376,
+      "mean_chars_per_page": 3068.8,
+      "textless_pages": 1
+    },
+    {
+      "beacon": "mongol_mamluk_1258_1517",
+      "pdf": "data/raw/beacons/mongol_mamluk_1258_1517/smith_1975_mongol_manpower_excerpt_06677b72.pdf",
+      "sidecar": "data/raw/beacons/mongol_mamluk_1258_1517/_text/smith_1975_mongol_manpower_excerpt_06677b72.txt",
+      "status": "born_digital",
+      "pages": 12,
+      "chars": 48245,
+      "mean_chars_per_page": 4020.4,
+      "textless_pages": 0
+    },
+    {
+      "beacon": "muhammad_arabia_unification_610_632",
+      "pdf": "data/raw/beacons/muhammad_arabia_unification_610_632/donner_2010_muhammad_believers_fbb7800a.pdf",
+      "sidecar": "data/raw/beacons/muhammad_arabia_unification_610_632/_text/donner_2010_muhammad_believers_fbb7800a.txt",
+      "status": "born_digital",
+      "pages": 51,
+      "chars": 103568,
+      "mean_chars_per_page": 2030.7,
+      "textless_pages": 0
+    },
+    {
+      "beacon": "muhammad_arabia_unification_610_632",
+      "pdf": "data/raw/beacons/muhammad_arabia_unification_610_632/fisher_kingdoms_arabia_35fbb1eb.pdf",
+      "sidecar": "data/raw/beacons/muhammad_arabia_unification_610_632/_text/fisher_kingdoms_arabia_35fbb1eb.txt",
+      "status": "born_digital",
+      "pages": 23,
+      "chars": 75859,
+      "mean_chars_per_page": 3298.2,
+      "textless_pages": 0
+    },
+    {
+      "beacon": "muhammad_arabia_unification_610_632",
+      "pdf": "data/raw/beacons/muhammad_arabia_unification_610_632/hoyland_seeing_islam_be15b9a3.pdf",
+      "sidecar": "data/raw/beacons/muhammad_arabia_unification_610_632/_text/hoyland_seeing_islam_be15b9a3.txt",
+      "status": "born_digital",
+      "pages": 891,
+      "chars": 2127663,
+      "mean_chars_per_page": 2387.9,
+      "textless_pages": 17
+    },
+    {
+      "beacon": "muhammad_arabia_unification_610_632",
+      "pdf": "data/raw/beacons/muhammad_arabia_unification_610_632/lecker_1995_muslims_jews_pagans_0e741661.pdf",
+      "sidecar": "data/raw/beacons/muhammad_arabia_unification_610_632/_text/lecker_1995_muslims_jews_pagans_0e741661.txt",
+      "status": "born_digital",
+      "pages": 200,
+      "chars": 764690,
+      "mean_chars_per_page": 3823.4,
+      "textless_pages": 0
+    },
+    {
+      "beacon": "muhammad_arabia_unification_610_632",
+      "pdf": "data/raw/beacons/muhammad_arabia_unification_610_632/toral_niehoff_imperial_contests_arabs_4915587a.pdf",
+      "sidecar": "data/raw/beacons/muhammad_arabia_unification_610_632/_text/toral_niehoff_imperial_contests_arabs_4915587a.txt",
+      "status": "born_digital",
+      "pages": 18,
+      "chars": 57265,
+      "mean_chars_per_page": 3181.4,
+      "textless_pages": 0
+    },
+    {
+      "beacon": "muhammad_arabia_unification_610_632",
+      "pdf": "data/raw/beacons/muhammad_arabia_unification_610_632/van_breukelen_arabia_byzantium_179a24b5.pdf",
+      "sidecar": "data/raw/beacons/muhammad_arabia_unification_610_632/_text/van_breukelen_arabia_byzantium_179a24b5.txt",
+      "status": "born_digital",
+      "pages": 185,
+      "chars": 302424,
+      "mean_chars_per_page": 1634.7,
+      "textless_pages": 5
+    },
+    {
+      "beacon": "ottoman_peak_1453_1683",
+      "pdf": "data/raw/beacons/ottoman_peak_1453_1683/antov_wild_west_excerpt_2017_2efb68e6.pdf",
+      "sidecar": "data/raw/beacons/ottoman_peak_1453_1683/_text/antov_wild_west_excerpt_2017_2efb68e6.txt",
+      "status": "born_digital",
+      "pages": 10,
+      "chars": 34114,
+      "mean_chars_per_page": 3411.4,
+      "textless_pages": 0
+    },
+    {
+      "beacon": "ottoman_peak_1453_1683",
+      "pdf": "data/raw/beacons/ottoman_peak_1453_1683/barkan_tarihi_demografi_acar_c89cbe01.pdf",
+      "sidecar": "data/raw/beacons/ottoman_peak_1453_1683/_text/barkan_tarihi_demografi_acar_c89cbe01.txt",
+      "status": "born_digital",
+      "pages": 26,
+      "chars": 71110,
+      "mean_chars_per_page": 2735.0,
+      "textless_pages": 0
+    },
+    {
+      "beacon": "ottoman_peak_1453_1683",
+      "pdf": "data/raw/beacons/ottoman_peak_1453_1683/bilig_nigbolu_sandjak_settlement_685758a4.pdf",
+      "sidecar": "data/raw/beacons/ottoman_peak_1453_1683/_text/bilig_nigbolu_sandjak_settlement_685758a4.txt",
+      "status": "born_digital",
+      "pages": 24,
+      "chars": 54696,
+      "mean_chars_per_page": 2279.0,
+      "textless_pages": 0
+    },
+    {
+      "beacon": "ottoman_peak_1453_1683",
+      "pdf": "data/raw/beacons/ottoman_peak_1453_1683/istanbul_population_conquest_18c_87f7ceca.pdf",
+      "sidecar": "data/raw/beacons/ottoman_peak_1453_1683/_text/istanbul_population_conquest_18c_87f7ceca.txt",
+      "status": "born_digital",
+      "pages": 19,
+      "chars": 83241,
+      "mean_chars_per_page": 4381.1,
+      "textless_pages": 0
+    },
+    {
+      "beacon": "ottoman_peak_1453_1683",
+      "pdf": "data/raw/beacons/ottoman_peak_1453_1683/levantine_galata_1455_survey_d5e1764b.pdf",
+      "sidecar": "data/raw/beacons/ottoman_peak_1453_1683/_text/levantine_galata_1455_survey_d5e1764b.txt",
+      "status": "born_digital",
+      "pages": 255,
+      "chars": 534515,
+      "mean_chars_per_page": 2096.1,
+      "textless_pages": 2
+    },
+    {
+      "beacon": "ottoman_peak_1453_1683",
+      "pdf": "data/raw/beacons/ottoman_peak_1453_1683/nigbolu_sandjak_thesis_2006_493853ee.pdf",
+      "sidecar": "data/raw/beacons/ottoman_peak_1453_1683/_text/nigbolu_sandjak_thesis_2006_493853ee.txt",
+      "status": "born_digital",
+      "pages": 157,
+      "chars": 256547,
+      "mean_chars_per_page": 1634.1,
+      "textless_pages": 6
+    },
+    {
+      "beacon": "ottoman_peak_1453_1683",
+      "pdf": "data/raw/beacons/ottoman_peak_1453_1683/tahrir_defters_gumuscu_belleten_8601a8e9.pdf",
+      "sidecar": "data/raw/beacons/ottoman_peak_1453_1683/_text/tahrir_defters_gumuscu_belleten_8601a8e9.txt",
+      "status": "born_digital",
+      "pages": 32,
+      "chars": 77524,
+      "mean_chars_per_page": 2422.6,
+      "textless_pages": 1
+    },
+    {
+      "beacon": "ottoman_peak_1453_1683",
+      "pdf": "data/raw/beacons/ottoman_peak_1453_1683/uconn_ottoman_anatolia_1530_df1346f0.pdf",
+      "sidecar": "data/raw/beacons/ottoman_peak_1453_1683/_text/uconn_ottoman_anatolia_1530_df1346f0.txt",
+      "status": "born_digital",
+      "pages": 27,
+      "chars": 49535,
+      "mean_chars_per_page": 1834.6,
+      "textless_pages": 0
+    },
+    {
+      "beacon": "ottoman_rise_1299_1683",
+      "pdf": "data/raw/beacons/ottoman_rise_1299_1683/barkan_tarihi_demografi_acar_c89cbe01.pdf",
+      "sidecar": "data/raw/beacons/ottoman_rise_1299_1683/_text/barkan_tarihi_demografi_acar_c89cbe01.txt",
+      "status": "born_digital",
+      "pages": 26,
+      "chars": 71110,
+      "mean_chars_per_page": 2735.0,
+      "textless_pages": 0
+    },
+    {
+      "beacon": "ottoman_rise_1299_1683",
+      "pdf": "data/raw/beacons/ottoman_rise_1299_1683/bilig_nigbolu_sandjak_settlement_685758a4.pdf",
+      "sidecar": "data/raw/beacons/ottoman_rise_1299_1683/_text/bilig_nigbolu_sandjak_settlement_685758a4.txt",
+      "status": "born_digital",
+      "pages": 24,
+      "chars": 54696,
+      "mean_chars_per_page": 2279.0,
+      "textless_pages": 0
+    },
+    {
+      "beacon": "ottoman_rise_1299_1683",
+      "pdf": "data/raw/beacons/ottoman_rise_1299_1683/nigbolu_sandjak_thesis_2006_493853ee.pdf",
+      "sidecar": "data/raw/beacons/ottoman_rise_1299_1683/_text/nigbolu_sandjak_thesis_2006_493853ee.txt",
+      "status": "born_digital",
+      "pages": 157,
+      "chars": 256547,
+      "mean_chars_per_page": 1634.1,
+      "textless_pages": 6
+    },
+    {
+      "beacon": "ottoman_rise_1299_1683",
+      "pdf": "data/raw/beacons/ottoman_rise_1299_1683/ozel_anatolia_demographic_crisis_2004_bf7ba208.pdf",
+      "sidecar": "data/raw/beacons/ottoman_rise_1299_1683/_text/ozel_anatolia_demographic_crisis_2004_bf7ba208.txt",
+      "status": "born_digital",
+      "pages": 24,
+      "chars": 100840,
+      "mean_chars_per_page": 4201.7,
+      "textless_pages": 0
+    },
+    {
+      "beacon": "ottoman_rise_1299_1683",
+      "pdf": "data/raw/beacons/ottoman_rise_1299_1683/selcuk_cizye_demography_1571_6f357e76.pdf",
+      "sidecar": "data/raw/beacons/ottoman_rise_1299_1683/_text/selcuk_cizye_demography_1571_6f357e76.txt",
+      "status": "born_digital",
+      "pages": 28,
+      "chars": 71750,
+      "mean_chars_per_page": 2562.5,
+      "textless_pages": 0
+    },
+    {
+      "beacon": "ottoman_rise_1299_1683",
+      "pdf": "data/raw/beacons/ottoman_rise_1299_1683/tahrir_defters_gumuscu_belleten_8601a8e9.pdf",
+      "sidecar": "data/raw/beacons/ottoman_rise_1299_1683/_text/tahrir_defters_gumuscu_belleten_8601a8e9.txt",
+      "status": "born_digital",
+      "pages": 32,
+      "chars": 77524,
+      "mean_chars_per_page": 2422.6,
+      "textless_pages": 1
+    },
+    {
+      "beacon": "ottoman_rise_1299_1683",
+      "pdf": "data/raw/beacons/ottoman_rise_1299_1683/uconn_ottoman_anatolia_1530_df1346f0.pdf",
+      "sidecar": "data/raw/beacons/ottoman_rise_1299_1683/_text/uconn_ottoman_anatolia_1530_df1346f0.txt",
+      "status": "born_digital",
+      "pages": 27,
+      "chars": 49535,
+      "mean_chars_per_page": 1834.6,
+      "textless_pages": 0
+    },
+    {
+      "beacon": "ottoman_tanzimat_1800_1914",
+      "pdf": "data/raw/beacons/ottoman_tanzimat_1800_1914/clements_millet_paradigm_tanzimat_6a93f4c1.pdf",
+      "sidecar": "data/raw/beacons/ottoman_tanzimat_1800_1914/_text/clements_millet_paradigm_tanzimat_6a93f4c1.txt",
+      "status": "born_digital",
+      "pages": 27,
+      "chars": 103382,
+      "mean_chars_per_page": 3829.0,
+      "textless_pages": 0
+    },
+    {
+      "beacon": "ottoman_tanzimat_1800_1914",
+      "pdf": "data/raw/beacons/ottoman_tanzimat_1800_1914/karpat_ottoman_population_1830_1914_full_65d7a0d6.pdf",
+      "sidecar": "data/raw/beacons/ottoman_tanzimat_1800_1914/_text/karpat_ottoman_population_1830_1914_full_65d7a0d6.txt",
+      "status": "born_digital",
+      "pages": 129,
+      "chars": 945985,
+      "mean_chars_per_page": 7333.2,
+      "textless_pages": 0
+    },
+    {
+      "beacon": "ottoman_tanzimat_1800_1914",
+      "pdf": "data/raw/beacons/ottoman_tanzimat_1800_1914/mutlu_late_ottoman_ethnic_distribution_2003_15f5a248.pdf",
+      "sidecar": "data/raw/beacons/ottoman_tanzimat_1800_1914/_text/mutlu_late_ottoman_ethnic_distribution_2003_15f5a248.txt",
+      "status": "born_digital",
+      "pages": 39,
+      "chars": 124054,
+      "mean_chars_per_page": 3180.9,
+      "textless_pages": 0
+    },
+    {
+      "beacon": "ottoman_tanzimat_1800_1914",
+      "pdf": "data/raw/beacons/ottoman_tanzimat_1800_1914/senisik_balkan_wars_muslim_migration_2014_bfe58c7d.pdf",
+      "sidecar": "data/raw/beacons/ottoman_tanzimat_1800_1914/_text/senisik_balkan_wars_muslim_migration_2014_bfe58c7d.txt",
+      "status": "born_digital",
+      "pages": 8,
+      "chars": 25343,
+      "mean_chars_per_page": 3167.9,
+      "textless_pages": 0
+    },
+    {
+      "beacon": "ottoman_tanzimat_1800_1914",
+      "pdf": "data/raw/beacons/ottoman_tanzimat_1800_1914/shaw_census_system_1831_1914_66fb57ac.pdf",
+      "sidecar": "data/raw/beacons/ottoman_tanzimat_1800_1914/_text/shaw_census_system_1831_1914_66fb57ac.txt",
+      "status": "born_digital",
+      "pages": 15,
+      "chars": 44285,
+      "mean_chars_per_page": 2952.3,
+      "textless_pages": 0
+    },
+    {
+      "beacon": "ottoman_tanzimat_1800_1914",
+      "pdf": "data/raw/beacons/ottoman_tanzimat_1800_1914/shaw_census_system_mirror_bb3c8dec.pdf",
+      "sidecar": "data/raw/beacons/ottoman_tanzimat_1800_1914/_text/shaw_census_system_mirror_bb3c8dec.txt",
+      "status": "born_digital",
+      "pages": 14,
+      "chars": 42235,
+      "mean_chars_per_page": 3016.8,
+      "textless_pages": 0
+    },
+    {
+      "beacon": "rashidun_conquests_632_661",
+      "pdf": "data/raw/beacons/rashidun_conquests_632_661/donner_1981_early_islamic_conquests_d68dd755.pdf",
+      "sidecar": "data/raw/beacons/rashidun_conquests_632_661/_text/donner_1981_early_islamic_conquests_d68dd755.txt",
+      "status": "born_digital",
+      "pages": 512,
+      "chars": 1255637,
+      "mean_chars_per_page": 2452.4,
+      "textless_pages": 14
+    },
+    {
+      "beacon": "rashidun_conquests_632_661",
+      "pdf": "data/raw/beacons/rashidun_conquests_632_661/donner_islamic_conquests_essay_5d19ab6a.pdf",
+      "sidecar": "data/raw/beacons/rashidun_conquests_632_661/_text/donner_islamic_conquests_essay_5d19ab6a.txt",
+      "status": "born_digital",
+      "pages": 23,
+      "chars": 86261,
+      "mean_chars_per_page": 3750.5,
+      "textless_pages": 0
+    },
+    {
+      "beacon": "rashidun_conquests_632_661",
+      "pdf": "data/raw/beacons/rashidun_conquests_632_661/kennedy_prophet_age_caliphates_b1a3ac00.pdf",
+      "sidecar": "data/raw/beacons/rashidun_conquests_632_661/_text/kennedy_prophet_age_caliphates_b1a3ac00.txt",
+      "status": "born_digital",
+      "pages": 383,
+      "chars": 1204183,
+      "mean_chars_per_page": 3144.1,
+      "textless_pages": 2
+    },
+    {
+      "beacon": "rashidun_conquests_632_661",
+      "pdf": "data/raw/beacons/rashidun_conquests_632_661/retso_constantinople_conquests_141bb925.pdf",
+      "sidecar": "data/raw/beacons/rashidun_conquests_632_661/_text/retso_constantinople_conquests_141bb925.txt",
+      "status": "born_digital",
+      "pages": 10,
+      "chars": 24477,
+      "mean_chars_per_page": 2447.7,
+      "textless_pages": 0
+    },
+    {
+      "beacon": "rashidun_conquests_632_661",
+      "pdf": "data/raw/beacons/rashidun_conquests_632_661/robinson_new_cambridge_history_islam_vol1_39e93fb4.pdf",
+      "sidecar": "data/raw/beacons/rashidun_conquests_632_661/_text/robinson_new_cambridge_history_islam_vol1_39e93fb4.txt",
+      "status": "born_digital",
+      "pages": 824,
+      "chars": 2348990,
+      "mean_chars_per_page": 2850.7,
+      "textless_pages": 12
+    },
+    {
+      "beacon": "syrian_civil_war_refugees_2011_present",
+      "pdf": "data/raw/beacons/syrian_civil_war_refugees_2011_present/erf_jordan_syrian_refugee_triangulation_dfbe98b9.pdf",
+      "sidecar": "data/raw/beacons/syrian_civil_war_refugees_2011_present/_text/erf_jordan_syrian_refugee_triangulation_dfbe98b9.txt",
+      "status": "born_digital",
+      "pages": 35,
+      "chars": 56418,
+      "mean_chars_per_page": 1611.9,
+      "textless_pages": 1
+    },
+    {
+      "beacon": "syrian_civil_war_refugees_2011_present",
+      "pdf": "data/raw/beacons/syrian_civil_war_refugees_2011_present/idmc_grid_2024_58abee0b.pdf",
+      "sidecar": "data/raw/beacons/syrian_civil_war_refugees_2011_present/_text/idmc_grid_2024_58abee0b.txt",
+      "status": "born_digital",
+      "pages": 69,
+      "chars": 318790,
+      "mean_chars_per_page": 4620.1,
+      "textless_pages": 0
+    },
+    {
+      "beacon": "syrian_civil_war_refugees_2011_present",
+      "pdf": "data/raw/beacons/syrian_civil_war_refugees_2011_present/idmc_syria_idp_fb117097.pdf",
+      "sidecar": "data/raw/beacons/syrian_civil_war_refugees_2011_present/_text/idmc_syria_idp_fb117097.txt",
+      "status": "born_digital",
+      "pages": 2,
+      "chars": 5852,
+      "mean_chars_per_page": 2926.0,
+      "textless_pages": 0
+    },
+    {
+      "beacon": "syrian_civil_war_refugees_2011_present",
+      "pdf": "data/raw/beacons/syrian_civil_war_refugees_2011_present/idmc_syria_spotlight_2019_5c1e6f15.pdf",
+      "sidecar": "data/raw/beacons/syrian_civil_war_refugees_2011_present/_text/idmc_syria_spotlight_2019_5c1e6f15.txt",
+      "status": "born_digital",
+      "pages": 4,
+      "chars": 8146,
+      "mean_chars_per_page": 2036.5,
+      "textless_pages": 0
+    },
+    {
+      "beacon": "syrian_civil_war_refugees_2011_present",
+      "pdf": "data/raw/beacons/syrian_civil_war_refugees_2011_present/jordan_dos_census_2015_15b6eebc.pdf",
+      "sidecar": "data/raw/beacons/syrian_civil_war_refugees_2011_present/_text/jordan_dos_census_2015_15b6eebc.txt",
+      "status": "born_digital",
+      "pages": 60,
+      "chars": 113841,
+      "mean_chars_per_page": 1897.3,
+      "textless_pages": 0
+    },
+    {
+      "beacon": "syrian_civil_war_refugees_2011_present",
+      "pdf": "data/raw/beacons/syrian_civil_war_refugees_2011_present/jordan_dos_census_2015_main_result_1096e501.pdf",
+      "sidecar": "data/raw/beacons/syrian_civil_war_refugees_2011_present/_text/jordan_dos_census_2015_main_result_1096e501.txt",
+      "status": "born_digital",
+      "pages": 60,
+      "chars": 113841,
+      "mean_chars_per_page": 1897.3,
+      "textless_pages": 0
+    },
+    {
+      "beacon": "syrian_civil_war_refugees_2011_present",
+      "pdf": "data/raw/beacons/syrian_civil_war_refugees_2011_present/scpr_displacement_determinants_3eac18cc.pdf",
+      "sidecar": "data/raw/beacons/syrian_civil_war_refugees_2011_present/_text/scpr_displacement_determinants_3eac18cc.txt",
+      "status": "born_digital",
+      "pages": 36,
+      "chars": 86120,
+      "mean_chars_per_page": 2392.2,
+      "textless_pages": 0
+    },
+    {
+      "beacon": "syrian_civil_war_refugees_2011_present",
+      "pdf": "data/raw/beacons/syrian_civil_war_refugees_2011_present/scpr_forced_dispersion_2016_e0cc4224.pdf",
+      "sidecar": "data/raw/beacons/syrian_civil_war_refugees_2011_present/_text/scpr_forced_dispersion_2016_e0cc4224.txt",
+      "status": "born_digital",
+      "pages": 153,
+      "chars": 292404,
+      "mean_chars_per_page": 1911.1,
+      "textless_pages": 1
+    },
+    {
+      "beacon": "syrian_civil_war_refugees_2011_present",
+      "pdf": "data/raw/beacons/syrian_civil_war_refugees_2011_present/scpr_forced_dispersion_press_release_2d9165f7.pdf",
+      "sidecar": "data/raw/beacons/syrian_civil_war_refugees_2011_present/_text/scpr_forced_dispersion_press_release_2d9165f7.txt",
+      "status": "born_digital",
+      "pages": 3,
+      "chars": 9078,
+      "mean_chars_per_page": 3026.0,
+      "textless_pages": 0
+    },
+    {
+      "beacon": "syrian_civil_war_refugees_2011_present",
+      "pdf": "data/raw/beacons/syrian_civil_war_refugees_2011_present/unhcr_refugee_statistics_methodology_17b8132a.pdf",
+      "sidecar": "data/raw/beacons/syrian_civil_war_refugees_2011_present/_text/unhcr_refugee_statistics_methodology_17b8132a.txt",
+      "status": "born_digital",
+      "pages": 21,
+      "chars": 52858,
+      "mean_chars_per_page": 2517.0,
+      "textless_pages": 0
+    },
+    {
+      "beacon": "syrian_civil_war_refugees_2011_present",
+      "pdf": "data/raw/beacons/syrian_civil_war_refugees_2011_present/unhcr_vasyr_2024_exec_summary_7102af2e.pdf",
+      "sidecar": "data/raw/beacons/syrian_civil_war_refugees_2011_present/_text/unhcr_vasyr_2024_exec_summary_7102af2e.txt",
+      "status": "born_digital",
+      "pages": 19,
+      "chars": 43235,
+      "mean_chars_per_page": 2275.5,
+      "textless_pages": 0
+    },
+    {
+      "beacon": "syrian_civil_war_refugees_2011_present",
+      "pdf": "data/raw/beacons/syrian_civil_war_refugees_2011_present/world_bank_lbn_esia_summary_7996cb40.pdf",
+      "sidecar": "data/raw/beacons/syrian_civil_war_refugees_2011_present/_text/world_bank_lbn_esia_summary_7996cb40.txt",
+      "status": "born_digital",
+      "pages": 8,
+      "chars": 28808,
+      "mean_chars_per_page": 3601.0,
+      "textless_pages": 0
+    },
+    {
+      "beacon": "umayyad_expansion_661_750",
+      "pdf": "data/raw/beacons/umayyad_expansion_661_750/donner_1981_early_islamic_conquests_d68dd755.pdf",
+      "sidecar": "data/raw/beacons/umayyad_expansion_661_750/_text/donner_1981_early_islamic_conquests_d68dd755.txt",
+      "status": "born_digital",
+      "pages": 512,
+      "chars": 1255637,
+      "mean_chars_per_page": 2452.4,
+      "textless_pages": 14
+    },
+    {
+      "beacon": "umayyad_expansion_661_750",
+      "pdf": "data/raw/beacons/umayyad_expansion_661_750/kennedy_prophet_age_caliphates_b1a3ac00.pdf",
+      "sidecar": "data/raw/beacons/umayyad_expansion_661_750/_text/kennedy_prophet_age_caliphates_b1a3ac00.txt",
+      "status": "born_digital",
+      "pages": 383,
+      "chars": 1204183,
+      "mean_chars_per_page": 3144.1,
+      "textless_pages": 2
+    },
+    {
+      "beacon": "umayyad_expansion_661_750",
+      "pdf": "data/raw/beacons/umayyad_expansion_661_750/retso_constantinople_conquests_141bb925.pdf",
+      "sidecar": "data/raw/beacons/umayyad_expansion_661_750/_text/retso_constantinople_conquests_141bb925.txt",
+      "status": "born_digital",
+      "pages": 10,
+      "chars": 24477,
+      "mean_chars_per_page": 2447.7,
+      "textless_pages": 0
+    },
+    {
+      "beacon": "umayyad_expansion_661_750",
+      "pdf": "data/raw/beacons/umayyad_expansion_661_750/robinson_new_cambridge_history_islam_vol1_39e93fb4.pdf",
+      "sidecar": "data/raw/beacons/umayyad_expansion_661_750/_text/robinson_new_cambridge_history_islam_vol1_39e93fb4.txt",
+      "status": "born_digital",
+      "pages": 824,
+      "chars": 2348990,
+      "mean_chars_per_page": 2850.7,
+      "textless_pages": 12
+    },
+    {
+      "beacon": "umayyad_expansion_661_750",
+      "pdf": "data/raw/beacons/umayyad_expansion_661_750/wood_christians_middle_east_600_1000_3e3f21db.pdf",
+      "sidecar": "data/raw/beacons/umayyad_expansion_661_750/_text/wood_christians_middle_east_600_1000_3e3f21db.txt",
+      "status": "born_digital",
+      "pages": 28,
+      "chars": 100336,
+      "mean_chars_per_page": 3583.4,
+      "textless_pages": 0
+    }
+  ]
+}
