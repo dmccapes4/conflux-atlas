@@ -1,0 +1,321 @@
+{
+  "preregistered_params": {
+    "shock_sigma_multiplier": 2.0,
+    "grid": [
+      1850,
+      2025,
+      5
+    ],
+    "nugget_year_tolerance": 3
+  },
+  "nugget": {
+    "per_group": {
+      "muslim": 0.03816185625249313,
+      "christian": 0.045816104838005446,
+      "jewish": 0.015248807381527117
+    },
+    "pooled": 0.03649835148924666,
+    "n_pairs": {
+      "muslim": 50,
+      "christian": 13,
+      "jewish": 14
+    }
+  },
+  "dynamics": {
+    "fit_start": 1920,
+    "n_transitions": 675,
+    "rate_mean": -0.004867880324142223,
+    "rate_std": 0.026568799198574
+  },
+  "anchor_drop_curves": {
+    "no_nugget": {
+      "linear": {
+        "n_series": 37,
+        "n_holdouts": 282,
+        "coverage_overall": 0.5886524822695035,
+        "mean_interval_score": 0.2800923909056148,
+        "by_gap": {
+          "1-5": {
+            "n": 210,
+            "coverage_observed": 0.49523809523809526,
+            "coverage_wilson95": [
+              0.428,
+              0.562
+            ],
+            "mean_interval_score": 0.21835800806551076,
+            "mean_width": 0.01811455587810947
+          },
+          "6-10": {
+            "n": 15,
+            "coverage_observed": 0.6666666666666666,
+            "coverage_wilson95": [
+              0.417,
+              0.848
+            ],
+            "mean_interval_score": 0.2827703341782903,
+            "mean_width": 0.05397902235797193
+          },
+          "11-25": {
+            "n": 6,
+            "coverage_observed": 0.8333333333333334,
+            "coverage_wilson95": [
+              0.436,
+              0.97
+            ],
+            "mean_interval_score": 0.3944864888842386,
+            "mean_width": 0.09919586270020443
+          },
+          "26-50": {
+            "n": 51,
+            "coverage_observed": 0.9215686274509803,
+            "coverage_wilson95": [
+              0.815,
+              0.969
+            ],
+            "mean_interval_score": 0.5200470312871828,
+            "mean_width": 0.23592658504236957
+          },
+          "51+": {
+            "n": 0
+          }
+        }
+      },
+      "sqrt": {
+        "n_series": 37,
+        "n_holdouts": 282,
+        "coverage_overall": 0.6666666666666666,
+        "mean_interval_score": 0.2635972428299677,
+        "by_gap": {
+          "1-5": {
+            "n": 210,
+            "coverage_observed": 0.6238095238095238,
+            "coverage_wilson95": [
+              0.557,
+              0.687
+            ],
+            "mean_interval_score": 0.19902215648294078,
+            "mean_width": 0.030749501993231277
+          },
+          "6-10": {
+            "n": 15,
+            "coverage_observed": 0.6666666666666666,
+            "coverage_wilson95": [
+              0.417,
+              0.848
+            ],
+            "mean_interval_score": 0.2803923773935334,
+            "mean_width": 0.05556432688114316
+          },
+          "11-25": {
+            "n": 6,
+            "coverage_observed": 0.8333333333333334,
+            "coverage_wilson95": [
+              0.436,
+              0.97
+            ],
+            "mean_interval_score": 0.3981271090899863,
+            "mean_width": 0.06959379945383057
+          },
+          "26-50": {
+            "n": 51,
+            "coverage_observed": 0.8235294117647058,
+            "coverage_wilson95": [
+              0.697,
+              0.904
+            ],
+            "mean_interval_score": 0.5087278686507926,
+            "mean_width": 0.12259623471144081
+          },
+          "51+": {
+            "n": 0
+          }
+        }
+      }
+    },
+    "nugget": {
+      "linear": {
+        "n_series": 37,
+        "n_holdouts": 282,
+        "coverage_overall": 0.8475177304964538,
+        "mean_interval_score": 0.2402487263187767,
+        "by_gap": {
+          "1-5": {
+            "n": 210,
+            "coverage_observed": 0.8333333333333334,
+            "coverage_wilson95": [
+              0.777,
+              0.878
+            ],
+            "mean_interval_score": 0.16648039218869262,
+            "mean_width": 0.07802785612853477
+          },
+          "6-10": {
+            "n": 15,
+            "coverage_observed": 0.8,
+            "coverage_wilson95": [
+              0.548,
+              0.93
+            ],
+            "mean_interval_score": 0.24320813016867368,
+            "mean_width": 0.098833023243675
+          },
+          "11-25": {
+            "n": 6,
+            "coverage_observed": 0.8333333333333334,
+            "coverage_wilson95": [
+              0.436,
+              0.97
+            ],
+            "mean_interval_score": 0.3989564151231307,
+            "mean_width": 0.10824665586941666
+          },
+          "26-50": {
+            "n": 51,
+            "coverage_observed": 0.9215686274509803,
+            "coverage_wilson95": [
+              0.815,
+              0.969
+            ],
+            "mean_interval_score": 0.524458784686288,
+            "mean_width": 0.2446077685244695
+          },
+          "51+": {
+            "n": 0
+          }
+        }
+      },
+      "sqrt": {
+        "n_series": 37,
+        "n_holdouts": 282,
+        "coverage_overall": 0.851063829787234,
+        "mean_interval_score": 0.23704285588573154,
+        "by_gap": {
+          "1-5": {
+            "n": 210,
+            "coverage_observed": 0.8476190476190476,
+            "coverage_wilson95": [
+              0.793,
+              0.89
+            ],
+            "mean_interval_score": 0.16583226962585326,
+            "mean_width": 0.0808655712181014
+          },
+          "6-10": {
+            "n": 15,
+            "coverage_observed": 0.8,
+            "coverage_wilson95": [
+              0.548,
+              0.93
+            ],
+            "mean_interval_score": 0.24181699030001835,
+            "mean_width": 0.09915047921796966
+          },
+          "11-25": {
+            "n": 6,
+            "coverage_observed": 0.8333333333333334,
+            "coverage_wilson95": [
+              0.436,
+              0.97
+            ],
+            "mean_interval_score": 0.4043113058317898,
+            "mean_width": 0.08213526529993372
+          },
+          "26-50": {
+            "n": 51,
+            "coverage_observed": 0.8823529411764706,
+            "coverage_wilson95": [
+              0.766,
+              0.945
+            ],
+            "mean_interval_score": 0.5091801186050215,
+            "mean_width": 0.1432419625598638
+          },
+          "51+": {
+            "n": 0
+          }
+        }
+      }
+    }
+  },
+  "best_curve_config": {
+    "variant": "nugget",
+    "shape": "sqrt",
+    "mean_bucket_miscal": 0.04082633053221285
+  },
+  "historical_lanes": {
+    "karpat_loo_no_nugget": {
+      "n": 3,
+      "n_excluded_contested": 0,
+      "coverage_observed": 0.3333333333333333,
+      "coverage_wilson95": [
+        0.061,
+        0.792
+      ],
+      "mean_interval_score": 0.3675805667542981,
+      "width_shape": "sqrt",
+      "lane": "same_polity"
+    },
+    "ottoman_provinces_no_nugget": {
+      "n": 34,
+      "n_excluded_contested": 0,
+      "coverage_observed": 0.20588235294117646,
+      "coverage_wilson95": [
+        0.103,
+        0.368
+      ],
+      "mean_interval_score": 0.9375799270383834,
+      "width_shape": "sqrt",
+      "lane": "cross_polity_stress_test"
+    },
+    "karpat_loo_nugget": {
+      "n": 3,
+      "n_excluded_contested": 0,
+      "coverage_observed": 0.3333333333333333,
+      "coverage_wilson95": [
+        0.061,
+        0.792
+      ],
+      "mean_interval_score": 0.28834134121184296,
+      "width_shape": "sqrt",
+      "lane": "same_polity"
+    },
+    "ottoman_provinces_nugget": {
+      "n": 34,
+      "n_excluded_contested": 0,
+      "coverage_observed": 0.2647058823529412,
+      "coverage_wilson95": [
+        0.146,
+        0.431
+      ],
+      "mean_interval_score": 0.8224918453341777,
+      "width_shape": "sqrt",
+      "lane": "cross_polity_stress_test"
+    }
+  },
+  "shock_windows_ottoman_empire": [],
+  "posterior_v2": {
+    "alpha": 2.0,
+    "beta": 3.0,
+    "trials": 3,
+    "mean": 0.4,
+    "variance": 0.04
+  },
+  "product": {
+    "path": "BRIDGE_V2_BACKFILL.jsonl",
+    "n_rows": 4592,
+    "width_by_era": {
+      "pre1920": {
+        "n": 376,
+        "mean_width": 0.0873
+      },
+      "1920_1999": {
+        "n": 2140,
+        "mean_width": 0.1164
+      },
+      "2000plus": {
+        "n": 2076,
+        "mean_width": 0.0546
+      }
+    }
+  }
+}
