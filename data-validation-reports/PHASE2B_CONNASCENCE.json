@@ -65,7 +65,7 @@
   },
   "edges": {
     "complement": 451,
-    "conservation": 10,
+    "conservation": 20,
     "co_variance_strict_fdr": 0,
     "co_variance_hypothesis_tier": 4,
     "co_variance_shuffle_control": 0
@@ -73,33 +73,86 @@
   "clusters": 3,
   "policy": {
     "n_claims": 783,
-    "n_shock": 0,
+    "n_shock": 63,
     "calm_shock": {
       "calm": {
         "majority": {
-          "n": 639,
-          "hit_rate": 0.6635,
-          "brier": 0.2239
+          "n": 612,
+          "hit_rate": 0.6716,
+          "brier": 0.2216
         },
         "persistence": {
-          "n": 72,
-          "hit_rate": 0.6667,
+          "n": 54,
+          "hit_rate": 0.6852,
           "brier": 0.25
         },
         "reversion": {
-          "n": 72,
-          "hit_rate": 0.6111,
+          "n": 54,
+          "hit_rate": 0.6481,
           "brier": 0.25
         }
       },
-      "shock": {}
+      "shock": {
+        "majority": {
+          "n": 27,
+          "hit_rate": 0.4815,
+          "brier": 0.2744
+        },
+        "persistence": {
+          "n": 18,
+          "hit_rate": 0.6111,
+          "brier": 0.25
+        },
+        "reversion": {
+          "n": 18,
+          "hit_rate": 0.5,
+          "brier": 0.25
+        }
+      }
     }
   },
-  "conservation_claims": [],
+  "conservation_claims": [
+    {
+      "edge_id": "syria_refugees_to_egypt_2011_2015",
+      "success": true,
+      "origin_loss": 292412.7233767137,
+      "dest_gain": 19384527.04613565
+    },
+    {
+      "edge_id": "syria_refugees_to_germany_2011_2015",
+      "success": true,
+      "origin_loss": 292412.7233767137,
+      "dest_gain": 1320462.2921199491
+    },
+    {
+      "edge_id": "syria_refugees_to_iraq_2011_2015",
+      "success": true,
+      "origin_loss": 292412.7233767137,
+      "dest_gain": 11097646.736296661
+    },
+    {
+      "edge_id": "syria_refugees_to_jordan_2011_2015",
+      "success": true,
+      "origin_loss": 292412.7233767137,
+      "dest_gain": 3509700.694012047
+    },
+    {
+      "edge_id": "syria_refugees_to_lebanon_2011_2015",
+      "success": false,
+      "origin_loss": 292412.7233767137,
+      "dest_gain": 723770.8804194368
+    },
+    {
+      "edge_id": "syria_refugees_to_turkey_2011_2015",
+      "success": false,
+      "origin_loss": 292412.7233767137,
+      "dest_gain": 11259883.96066524
+    }
+  ],
   "partial_settlement_demo": {
     "n_settled": 0,
     "n_pending": 783,
     "n_bumps": 0
   },
-  "brier_all": 0.2376059578544038
+  "brier_all": 0.23752822565275167
 }

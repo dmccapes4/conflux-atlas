@@ -72,3 +72,16 @@ Bulk script: `bash scripts/download_migration_sources.sh` (notes in `data/raw/MI
 4. Jewish Data Bank diaspora nodes for France/US/UK cross-checks against Pew.
 
 Drop new raw files under `data/raw/<source>/` and add a `source_id` row to `BIBLIOGRAPHY.md` before ingesting.
+
+## Event beacons (research-ops queue)
+
+Major demographic/religious-movement episodes are tracked as **beacons** (not yet `Event` rows):
+
+| Artifact | Path |
+| --- | --- |
+| Strategy | `docs/STRATEGY_EVENT_BEACONS.md` |
+| Schema + quality gate v0 | `docs/BEACON_SCHEMA.md` |
+| Queue | `data/processed/beacons.jsonl` |
+| Per-beacon bibliographies | `docs/beacon-inventories/` |
+
+Inventories list candidate sources behind the gate (no Reddit/blogs/listicles). Promotion into `events.jsonl` + BIBLIOGRAPHY still requires cited volumes/shares and polity membership.

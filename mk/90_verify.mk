@@ -5,7 +5,7 @@
 
 VALIDATION_DIR ?= data-validation-reports
 
-.PHONY: reports-dir verify-all verify-data shape-report phase0-reports test test-network test-phase1 test-phase2 test-phase3 phase2-5 phase1-scorecard phase2-trust phase3-backtest phase3-bridge
+.PHONY: reports-dir verify-all verify-data shape-report phase0-reports test test-network test-phase1 test-phase2 test-phase3 phase2-5 phase1-scorecard phase2-trust phase3-backtest phase3-bridge beacon-pdfs beacon-tranche1 phase2b
 
 reports-dir:
 	@mkdir -p "$(VALIDATION_DIR)"
@@ -57,6 +57,17 @@ phase3-backtest: reports-dir ## Pre-registered 1975 banded backtest → PHASE3_B
 
 phase3-bridge: reports-dir ## 1920+ dynamics backfill + holdout settle → PHASE3_BRIDGE.json
 	@$(PY) scripts/run_phase3_bridge.py
+
+beacon-tranche1: reports-dir ## Fetch/ingest UNHCR SYR OD + upsert Syria/Lebanon/Iran events+edges
+	@$(PY) scripts/fetch_unhcr_coo.py
+	@$(PY) scripts/ingest_unhcr_coo.py
+	@$(PY) scripts/seed_beacon_tranche1.py
+
+beacon-pdfs: ## Download open PDFs listed in docs/beacon-inventories/ → data/raw/beacons/
+	@$(PY) scripts/download_beacon_pdfs.py --continue
+
+phase2b: reports-dir ## Deterministic connascence layer → PHASE2B_*.json
+	@$(PY) scripts/run_phase2b_connascence.py
 
 test-network: ## Opt-in live URL probes (scrapers/APIs may 404/rotate)
 	@env -u HTTP_PROXY -u HTTPS_PROXY -u ALL_PROXY -u http_proxy -u https_proxy -u all_proxy \

@@ -59,6 +59,42 @@
       "beta": 25.0,
       "trials": 72,
       "mean": 0.6621621621621622
+    },
+    "conservation:syria_refugees_to_egypt_2011_2015": {
+      "alpha": 2.0,
+      "beta": 1.0,
+      "trials": 1,
+      "mean": 0.6666666666666666
+    },
+    "conservation:syria_refugees_to_germany_2011_2015": {
+      "alpha": 2.0,
+      "beta": 1.0,
+      "trials": 1,
+      "mean": 0.6666666666666666
+    },
+    "conservation:syria_refugees_to_iraq_2011_2015": {
+      "alpha": 2.0,
+      "beta": 1.0,
+      "trials": 1,
+      "mean": 0.6666666666666666
+    },
+    "conservation:syria_refugees_to_jordan_2011_2015": {
+      "alpha": 2.0,
+      "beta": 1.0,
+      "trials": 1,
+      "mean": 0.6666666666666666
+    },
+    "conservation:syria_refugees_to_lebanon_2011_2015": {
+      "alpha": 1.0,
+      "beta": 2.0,
+      "trials": 1,
+      "mean": 0.3333333333333333
+    },
+    "conservation:syria_refugees_to_turkey_2011_2015": {
+      "alpha": 1.0,
+      "beta": 2.0,
+      "trials": 1,
+      "mean": 0.3333333333333333
     }
   },
   "calibration": [
@@ -79,9 +115,9 @@
     {
       "p_lo": 0.6,
       "p_hi": 0.8,
-      "n": 647,
-      "stated_mean": 0.6396445131375579,
-      "observed": 0.6646058732612056
+      "n": 653,
+      "stated_mean": 0.6397396630934149,
+      "observed": 0.664624808575804
     },
     {
       "p_lo": 0.8,
@@ -91,7 +127,7 @@
       "observed": 0.7105263157894737
     }
   ],
-  "brier": 0.2376059578544038,
-  "n_claims": 1160,
-  "n_settled": 1160
+  "brier": 0.23752822565275167,
+  "n_claims": 1166,
+  "n_settled": 1166
 }

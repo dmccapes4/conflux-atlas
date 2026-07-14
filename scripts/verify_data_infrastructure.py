@@ -42,6 +42,7 @@ EXPECTED_FILES: dict[str, dict[str, object]] = {
     "population_totals_wpp.jsonl": {"desc": "UN WPP population totals", "min_rows": 1000},
     "population_totals_worldbank.jsonl": {"desc": "World Bank SP.POP.TOTL", "min_rows": 800},
     "unhcr_refugee_stock_by_coa.jsonl": {"desc": "UNHCR COA refugee stock", "min_rows": 500},
+    "unhcr_syria_refugee_stock_od.jsonl": {"desc": "UNHCR Syria-origin OD refugee stock", "min_rows": 50},
     "un_desa_migrant_stock_destination.jsonl": {"desc": "UN DESA destination stock", "min_rows": 100},
     "un_desa_migrant_stock_od.jsonl": {"desc": "UN DESA dest×origin stock", "min_rows": 1000},
     "wjp_world_core_jewish_population.jsonl": {"desc": "WJP world CJP series", "min_rows": 10},

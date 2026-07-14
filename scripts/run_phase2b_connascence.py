@@ -45,7 +45,7 @@ from conflux.connascence import (  # noqa: E402
     settle_conservation_claims,
     settle_corroboration_claims_weighted,
     split_calm_shock,
-    tag_shock_claims,
+    tag_shock_claims_contact,
     write_edges_jsonl,
 )
 from conflux.learning import TrustStore  # noqa: E402
@@ -167,7 +167,9 @@ def main() -> None:
     # ---- 4. policy tape with shock tagging + calm/shock calibration --------
     catalog = movement.build_catalog(anchors, groups=groups)
     pol_claims = settlement.make_policy_claims(catalog, cut_year=1975, min_bucket_n=2)
-    n_shock = tag_shock_claims(pol_claims, events)
+    # Polity-aware tagging: window-only would mark every 2010–2020 claim as shock
+    # once Syria 2011–2024 is on the tape (see tag_shock_claims_contact docstring).
+    n_shock = tag_shock_claims_contact(pol_claims, events, mig_edges)
     settlement.settle_policy_claims(pol_claims, catalog, store)
     halves = split_calm_shock(pol_claims)
     calm_shock = {}

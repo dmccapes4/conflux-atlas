@@ -67,6 +67,12 @@ METHOD_REGISTRY: dict[str, str] = {
     "arda_national_profiles_2005": "wcd_derived",
     "mccarthy_armenian_pop_ottoman": "scholarly_estimate",
     "karpat_ottoman_population_1830_1914": "scholarly_estimate",
+    "unhcr_population_api": "igo_refugee_statistics",
+    "labaki_abu_rjaili_2005": "scholarly_estimate",
+    "beacon_tranche1_v0": "hand_seed",
+    "idmc_syria_idp": "igo_refugee_statistics",
+    "scpr_forced_dispersion_2016": "scholarly_estimate",
+    "shaw_ottoman_census_system_1978": "scholarly_estimate",
 }
 
 SAME_FAMILY_WEIGHT = 0.5
