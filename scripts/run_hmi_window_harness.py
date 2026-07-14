@@ -96,6 +96,14 @@ def main() -> None:
     ap.add_argument("--pages", type=int, default=36)
     ap.add_argument("--facts-per-page", type=int, default=3)
     ap.add_argument("--url", default="http://localhost:11434")
+    ap.add_argument(
+        "--timeout",
+        type=float,
+        default=60.0,
+        help="per-call seconds before a window fails (legit calls finish in "
+        "well under 30s warm; schema-constrained greedy decode can loop "
+        "forever on small models — a loop should fail fast and be counted)",
+    )
     ap.add_argument("--env-file", default=None, help="fallback .env for OPENAI_API_KEY")
     ap.add_argument("--out", default=str(OUT / "HMI_WINDOW_HARNESS.json"))
     args = ap.parse_args()
@@ -123,7 +131,7 @@ def main() -> None:
     # --- clients ---
     clients = []
     for name in [m.strip() for m in args.ollama_models.split(",") if m.strip()]:
-        c = OllamaHarnessClient(model=name, base_url=args.url)
+        c = OllamaHarnessClient(model=name, base_url=args.url, timeout=args.timeout)
         if not c.available():
             print(f"⚠️  skipping {name}: not available at {args.url}", flush=True)
             continue
