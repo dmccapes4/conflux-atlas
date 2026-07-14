@@ -34,10 +34,19 @@ class Posterior:
         a, b = self.alpha, self.beta
         return (a * b) / ((a + b) ** 2 * (a + b + 1))
 
-    def bumped(self, success: bool) -> Posterior:
+    def bumped(self, success: bool, weight: float = 1.0) -> Posterior:
+        """Graded (fractional) evidence: ``weight`` < 1 discounts the bump.
+
+        Used for method-family independence discounts (connascence §2.1)
+        and one-hop partial settlement (§2.3). ``weight=1.0`` is the
+        classic full Bernoulli update; ``trials`` counts bumps, not mass.
+        """
+        w = float(weight)
+        if not 0.0 < w <= 1.0:
+            raise ValueError(f"weight must be in (0, 1]: {w}")
         return Posterior(
-            alpha=self.alpha + (1.0 if success else 0.0),
-            beta=self.beta + (0.0 if success else 1.0),
+            alpha=self.alpha + (w if success else 0.0),
+            beta=self.beta + (0.0 if success else w),
             trials=self.trials + 1,
         )
 
@@ -117,9 +126,9 @@ class TrustStore:
         """Read-only: unknown keys return the uniform prior without insert."""
         return self.posteriors.get(hypothesis_id, Posterior())
 
-    def bump(self, hypothesis_id: str, success: bool) -> Posterior:
+    def bump(self, hypothesis_id: str, success: bool, weight: float = 1.0) -> Posterior:
         cur = self.get(hypothesis_id)
-        nxt = cur.bumped(success)
+        nxt = cur.bumped(success, weight=weight)
         self.posteriors[hypothesis_id] = nxt
         return nxt
 
@@ -127,13 +136,15 @@ class TrustStore:
         """Append to the ledger. Never touches a posterior."""
         self.ledger.append(claim)
 
-    def settle(self, claim: Claim, success: bool) -> Posterior:
+    def settle(self, claim: Claim, success: bool, weight: float = 1.0) -> Posterior:
         if claim.settled:
             raise ValueError(f"already settled: {claim.claim_id}")
         claim.settled = True
         claim.success = bool(success)
         claim.settled_at = datetime.now(timezone.utc).isoformat()
-        return self.bump(claim.hypothesis_id, bool(success))
+        if weight != 1.0:
+            claim.meta["settle_weight"] = float(weight)
+        return self.bump(claim.hypothesis_id, bool(success), weight=weight)
 
     def summary(self) -> list[dict[str, Any]]:
         rows = []
