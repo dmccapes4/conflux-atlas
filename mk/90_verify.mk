@@ -5,7 +5,7 @@
 
 VALIDATION_DIR ?= data-validation-reports
 
-.PHONY: reports-dir verify-all verify-data shape-report phase0-reports test test-network test-phase1 phase1-scorecard
+.PHONY: reports-dir verify-all verify-data shape-report phase0-reports test test-network test-phase1 test-phase2 phase1-scorecard
 
 reports-dir:
 	@mkdir -p "$(VALIDATION_DIR)"
@@ -31,6 +31,11 @@ test: ## Phase 0 pytest gate (offline; skips -m network)
 test-phase1: ## Phase 1 contracts only, with skip reasons (-rs) while unimplemented
 	@$(PY) -m pytest -q -rs -m phase1; rc=$$?; \
 	if [ $$rc -eq 5 ]; then echo "(phase1 modules not implemented yet — contracts all skipped)"; exit 0; fi; \
+	exit $$rc
+
+test-phase2: ## Phase 2 contracts only, with skip reasons (-rs) while unimplemented
+	@$(PY) -m pytest -q -rs -m phase2; rc=$$?; \
+	if [ $$rc -eq 5 ]; then echo "(phase2 modules not implemented yet — contracts all skipped)"; exit 0; fi; \
 	exit $$rc
 
 phase1-scorecard: ## Run LOPO scorecard → data-validation-reports/PHASE1_SCORECARD.json
