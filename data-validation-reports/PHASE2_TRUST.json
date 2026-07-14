@@ -1,0 +1,54 @@
+{
+  "posteriors": {
+    "policy:reversion": {
+      "alpha": 45.0,
+      "beta": 29.0,
+      "trials": 72,
+      "mean": 0.6081081081081081
+    },
+    "policy:persistence": {
+      "alpha": 49.0,
+      "beta": 25.0,
+      "trials": 72,
+      "mean": 0.6621621621621622
+    },
+    "policy:majority": {
+      "alpha": 47.0,
+      "beta": 30.0,
+      "trials": 75,
+      "mean": 0.6103896103896104
+    },
+    "source_trust:hand_seed_v0": {
+      "alpha": 36.0,
+      "beta": 2.0,
+      "trials": 36,
+      "mean": 0.9473684210526315
+    }
+  },
+  "calibration": [
+    {
+      "p_lo": 0.5,
+      "p_hi": 0.6,
+      "n": 147,
+      "stated_mean": 0.5,
+      "observed": 0.6462585034013606
+    },
+    {
+      "p_lo": 0.6,
+      "p_hi": 0.8,
+      "n": 102,
+      "stated_mean": 0.650359477124183,
+      "observed": 0.7058823529411765
+    },
+    {
+      "p_lo": 0.8,
+      "p_hi": 1.0,
+      "n": 6,
+      "stated_mean": 0.8000000000000002,
+      "observed": 1.0
+    }
+  ],
+  "brier": 0.22798450254175728,
+  "n_claims": 255,
+  "n_settled": 255
+}

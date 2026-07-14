@@ -1,0 +1,97 @@
+{
+  "posteriors": {
+    "source_trust:arda_national_profiles_2005": {
+      "alpha": 137.0,
+      "beta": 150.0,
+      "trials": 285,
+      "mean": 0.47735191637630664
+    },
+    "source_trust:pew_global_religious_composition_2010_2020": {
+      "alpha": 22.0,
+      "beta": 10.0,
+      "trials": 30,
+      "mean": 0.6875
+    },
+    "source_trust:arab_barometer": {
+      "alpha": 35.0,
+      "beta": 13.0,
+      "trials": 46,
+      "mean": 0.7291666666666666
+    },
+    "definition_gap:cjp_vs_pew_jewish": {
+      "alpha": 4.0,
+      "beta": 1.0,
+      "trials": 6,
+      "mean": 0.8
+    },
+    "source_trust:cbs_population_madaf": {
+      "alpha": 3.0,
+      "beta": 1.0,
+      "trials": 2,
+      "mean": 0.75
+    },
+    "definition_gap:cjp_vs_cbs_jewish_registry": {
+      "alpha": 5.0,
+      "beta": 1.0,
+      "trials": 4,
+      "mean": 0.8333333333333334
+    },
+    "definition_gap:cbs_arab_proxy_vs_pew_muslim": {
+      "alpha": 1.0,
+      "beta": 5.0,
+      "trials": 4,
+      "mean": 0.16666666666666666
+    },
+    "policy:majority": {
+      "alpha": 425.0,
+      "beta": 216.0,
+      "trials": 639,
+      "mean": 0.6630265210608425
+    },
+    "policy:reversion": {
+      "alpha": 45.0,
+      "beta": 29.0,
+      "trials": 72,
+      "mean": 0.6081081081081081
+    },
+    "policy:persistence": {
+      "alpha": 49.0,
+      "beta": 25.0,
+      "trials": 72,
+      "mean": 0.6621621621621622
+    }
+  },
+  "calibration": [
+    {
+      "p_lo": 0.0,
+      "p_hi": 0.5,
+      "n": 48,
+      "stated_mean": 0.3979166666666667,
+      "observed": 0.7083333333333334
+    },
+    {
+      "p_lo": 0.5,
+      "p_hi": 0.6,
+      "n": 427,
+      "stated_mean": 0.5331381733021078,
+      "observed": 0.5339578454332553
+    },
+    {
+      "p_lo": 0.6,
+      "p_hi": 0.8,
+      "n": 647,
+      "stated_mean": 0.6396445131375579,
+      "observed": 0.6646058732612056
+    },
+    {
+      "p_lo": 0.8,
+      "p_hi": 1.0,
+      "n": 38,
+      "stated_mean": 0.8721052631578947,
+      "observed": 0.7105263157894737
+    }
+  ],
+  "brier": 0.2376059578544038,
+  "n_claims": 1160,
+  "n_settled": 1160
+}

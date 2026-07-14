@@ -1,0 +1,39 @@
+{
+  "repr_version": "place_hash_v1",
+  "clusters": [
+    {
+      "cluster_id": "a6fdf03fe84af1bf",
+      "series": [
+        "series|algeria|muslim",
+        "series|jordan|muslim",
+        "series|morocco|muslim"
+      ],
+      "year_min": 1950,
+      "year_max": 2024,
+      "dominant_direction": "up",
+      "n_edges": 2
+    },
+    {
+      "cluster_id": "3af9aac10967a73b",
+      "series": [
+        "series|france|muslim",
+        "series|syria|muslim"
+      ],
+      "year_min": 1900,
+      "year_max": 2020,
+      "dominant_direction": "up",
+      "n_edges": 1
+    },
+    {
+      "cluster_id": "99f48bcf855bf47b",
+      "series": [
+        "series|jordan|christian",
+        "series|lebanon|muslim"
+      ],
+      "year_min": 1900,
+      "year_max": 2024,
+      "dominant_direction": "up",
+      "n_edges": 1
+    }
+  ]
+}

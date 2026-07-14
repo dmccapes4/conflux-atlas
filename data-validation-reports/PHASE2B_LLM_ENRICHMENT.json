@@ -1,0 +1,17 @@
+{
+  "model": "qwen3:8b",
+  "windows_run": 6,
+  "windows_failed": 0,
+  "proposals": 56,
+  "verified": 50,
+  "rejected": 6,
+  "proposer_posterior": {
+    "alpha": 51.0,
+    "beta": 7.0,
+    "trials": 56,
+    "mean": 0.8793103448275862,
+    "variance": 0.0017987061407928415
+  },
+  "verified_event_attributions": [],
+  "n_verified_coupling_edges": 50
+}

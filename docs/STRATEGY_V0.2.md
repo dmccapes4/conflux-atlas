@@ -121,13 +121,14 @@ The most interesting technical bet, promoted from implicit to explicit:
 
 ### Phase 2 — Settlement & trust (weeks 6–10)
 
-- `conflux/learning.py`: Beta `TrustStore` port (near verbatim from ptv `learning.py`), keyed `source_trust:pew`, `source_trust:hand_seed_v0`, `dynamics:*`.
-- Claim → settle → bump; settlement tape = next census round, realized edge volumes, newly extracted historical tables landing on simulated priors.
-- Holdouts: leave-one-decade-out / leave-one-polity-out with an honest power discussion (~4–5 snapshots per polity).
+- `conflux/learning.py`: Beta `TrustStore` port (near verbatim from ptv `learning.py`), keyed `source_trust:pew`, `source_trust:hand_seed_v0`, `dynamics:*`. → **Done** (`save`/`load` added for the long demographic tape)
+- Claim → settle → bump; settlement tape = next census round, realized edge volumes, newly extracted historical tables landing on simulated priors. → **Done** (1975-cut policy claims + forward corroboration in `conflux/settlement.py`)
+- Holdouts: leave-one-decade-out / leave-one-polity-out with an honest power discussion (~4–5 snapshots per polity). → *Phase 1 LOPO remains; Phase 2 uses the temporal cut miniature*
 - *(Renamed from "anomaly detection" — the portable pattern is settlement-gated trust, not change-point ML.)*
-- **Optional experiment, strictly after the above:** PortalGC source-graph governance (see §8.C).
+- **Optional experiment, strictly after the above:** PortalGC source-graph governance (see §8.C). → **Still fenced off**
+- First trust report: → **Done** — `docs/REPORT_PHASE2_TRUST.md` (persistence leads policies; `hash_mode` silent; `hand_seed_v0` strongly corroborated by Pew)
 
-**Milestone:** trust ledger evaluated on known shocks; first calibration table.
+**Milestone:** trust ledger evaluated on known shocks; first calibration table. → *Reached (honest sparsity caveats included).*
 
 ### Phase 3 — The 1975 cut (weeks 10–16)
 

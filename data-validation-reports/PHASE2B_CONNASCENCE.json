@@ -1,0 +1,105 @@
+{
+  "repr_version": "place_hash_v1",
+  "n_observations": 1191,
+  "corroboration": {
+    "n_claims": 377,
+    "n_definitional_rerouted": 14,
+    "posterior_diff": {
+      "definition_gap:cbs_arab_proxy_vs_pew_muslim": {
+        "unweighted_mean": 0.5,
+        "weighted_mean": 0.1667,
+        "delta": -0.3333,
+        "trials_unweighted": 0,
+        "trials_weighted": 4
+      },
+      "definition_gap:cjp_vs_cbs_jewish_registry": {
+        "unweighted_mean": 0.5,
+        "weighted_mean": 0.8333,
+        "delta": 0.3333,
+        "trials_unweighted": 0,
+        "trials_weighted": 4
+      },
+      "definition_gap:cjp_vs_pew_jewish": {
+        "unweighted_mean": 0.5,
+        "weighted_mean": 0.8,
+        "delta": 0.3,
+        "trials_unweighted": 0,
+        "trials_weighted": 6
+      },
+      "source_trust:arab_barometer": {
+        "unweighted_mean": 0.7292,
+        "weighted_mean": 0.7292,
+        "delta": 0.0,
+        "trials_unweighted": 46,
+        "trials_weighted": 46
+      },
+      "source_trust:arda_national_profiles_2005": {
+        "unweighted_mean": 0.4774,
+        "weighted_mean": 0.4774,
+        "delta": 0.0,
+        "trials_unweighted": 285,
+        "trials_weighted": 285
+      },
+      "source_trust:cbs_population_madaf": {
+        "unweighted_mean": 0.6667,
+        "weighted_mean": 0.75,
+        "delta": 0.0833,
+        "trials_unweighted": 7,
+        "trials_weighted": 2
+      },
+      "source_trust:jewishdatabank_world_jewish_population": {
+        "unweighted_mean": 0.6667,
+        "weighted_mean": 0.5,
+        "delta": -0.1667,
+        "trials_unweighted": 1,
+        "trials_weighted": 0
+      },
+      "source_trust:pew_global_religious_composition_2010_2020": {
+        "unweighted_mean": 0.7,
+        "weighted_mean": 0.6875,
+        "delta": -0.0125,
+        "trials_unweighted": 38,
+        "trials_weighted": 30
+      }
+    }
+  },
+  "edges": {
+    "complement": 451,
+    "conservation": 10,
+    "co_variance_strict_fdr": 0,
+    "co_variance_hypothesis_tier": 4,
+    "co_variance_shuffle_control": 0
+  },
+  "clusters": 3,
+  "policy": {
+    "n_claims": 783,
+    "n_shock": 0,
+    "calm_shock": {
+      "calm": {
+        "majority": {
+          "n": 639,
+          "hit_rate": 0.6635,
+          "brier": 0.2239
+        },
+        "persistence": {
+          "n": 72,
+          "hit_rate": 0.6667,
+          "brier": 0.25
+        },
+        "reversion": {
+          "n": 72,
+          "hit_rate": 0.6111,
+          "brier": 0.25
+        }
+      },
+      "shock": {}
+    }
+  },
+  "conservation_claims": [],
+  "partial_settlement_demo": {
+    "n_settled": 0,
+    "n_pending": 783,
+    "n_bumps": 0
+  },
+  "brier_all": 0.2376059578544038
+}
