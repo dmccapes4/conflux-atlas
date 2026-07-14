@@ -1,0 +1,110 @@
+{
+  "preregistration": {
+    "cut_year": 1975,
+    "coverage": 0.8,
+    "alpha": 0.2,
+    "policies": [
+      "persistence",
+      "reversion",
+      "ar1"
+    ],
+    "primary_metric": "mean_interval_score",
+    "success_rule": "candidate_beats_all_baselines_on_primary_metric",
+    "contested_validation_excluded": [
+      "mccarthy_armenian_pop_ottoman"
+    ]
+  },
+  "policies": {
+    "persistence": {
+      "n": 108,
+      "coverage_observed": 0.5925925925925926,
+      "mean_interval_score": 0.32061494373207294,
+      "mean_width": 0.1817837049067246,
+      "calm": {
+        "n": 0,
+        "coverage_observed": 0.0,
+        "mean_interval_score": 0.0,
+        "mean_width": 0.0
+      },
+      "shock": {
+        "n": 108,
+        "coverage_observed": 0.5925925925925926,
+        "mean_interval_score": 0.32061494373207294,
+        "mean_width": 0.1817837049067246
+      }
+    },
+    "reversion": {
+      "n": 108,
+      "coverage_observed": 0.5648148148148148,
+      "mean_interval_score": 0.32723959804893094,
+      "mean_width": 0.1817837049067246,
+      "calm": {
+        "n": 0,
+        "coverage_observed": 0.0,
+        "mean_interval_score": 0.0,
+        "mean_width": 0.0
+      },
+      "shock": {
+        "n": 108,
+        "coverage_observed": 0.5648148148148148,
+        "mean_interval_score": 0.32723959804893094,
+        "mean_width": 0.1817837049067246
+      }
+    },
+    "ar1": {
+      "n": 0,
+      "coverage_observed": 0.0,
+      "mean_interval_score": 0.0,
+      "mean_width": 0.0,
+      "calm": {
+        "n": 0,
+        "coverage_observed": 0.0,
+        "mean_interval_score": 0.0,
+        "mean_width": 0.0
+      },
+      "shock": {
+        "n": 0,
+        "coverage_observed": 0.0,
+        "mean_interval_score": 0.0,
+        "mean_width": 0.0
+      }
+    }
+  },
+  "verdict": {
+    "candidate": null,
+    "best_baseline": "persistence",
+    "primary_metric": "mean_interval_score",
+    "success_rule": "candidate_beats_all_baselines_on_primary_metric",
+    "candidate_beats_all_baselines": null
+  },
+  "n_claims": 216,
+  "n_settled": 216,
+  "calibration": [
+    {
+      "p_lo": 0.8,
+      "p_hi": 0.9,
+      "n": 216,
+      "stated_mean": 0.8,
+      "observed": 0.5787037037037037
+    }
+  ],
+  "brier": 0.2927777777777775,
+  "posteriors": [
+    {
+      "hypothesis_id": "forecast:persistence",
+      "alpha": 65.0,
+      "beta": 45.0,
+      "trials": 108,
+      "mean": 0.5909090909090909,
+      "variance": 0.0021777976323430867
+    },
+    {
+      "hypothesis_id": "forecast:reversion",
+      "alpha": 62.0,
+      "beta": 48.0,
+      "trials": 108,
+      "mean": 0.5636363636363636,
+      "variance": 0.002215769488496761
+    }
+  ]
+}

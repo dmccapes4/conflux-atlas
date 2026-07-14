@@ -1,0 +1,46 @@
+{
+  "fit_start": 1920,
+  "n_transitions": 675,
+  "rate_mean": -0.004867880324142223,
+  "rate_std": 0.026568799198574,
+  "hypothesis": "dynamics:modern_fit",
+  "n_settled": 37,
+  "n_hits": 11,
+  "n_excluded_contested": 2,
+  "coverage_observed": 0.2972972972972973,
+  "coverage_stated": 0.8,
+  "calibration": [
+    {
+      "p_lo": 0.8,
+      "p_hi": 0.9,
+      "n": 37,
+      "stated_mean": 0.8,
+      "observed": 0.2972972972972973
+    }
+  ],
+  "posterior": {
+    "alpha": 12.0,
+    "beta": 27.0,
+    "trials": 37,
+    "mean": 0.3076923076923077,
+    "variance": 0.0053254437869822485
+  },
+  "holdout_inventory": {
+    "karpat_share_rows": 3,
+    "mccarthy_rows": 2,
+    "ottoman_province_rows": 34,
+    "basihos_population_rows": 16,
+    "holdout_sources": [
+      "ottoman_demographics_wiki",
+      "karpat_ottoman_population_1830_1914",
+      "seda_basihos_ottoman_population_2016",
+      "mccarthy_armenian_pop_ottoman"
+    ]
+  },
+  "protocol_notes": [
+    "karpat_loo: 3 holdouts settled against sibling Karpat anchors",
+    "mccarthy: 2 excluded (contested_validation)",
+    "ottoman_1914_provinces: 34 settled vs Karpat-era prior",
+    "basihos: 16 population rows, 0 religion shares — not settleable"
+  ]
+}

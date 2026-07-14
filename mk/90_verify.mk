@@ -5,7 +5,7 @@
 
 VALIDATION_DIR ?= data-validation-reports
 
-.PHONY: reports-dir verify-all verify-data shape-report phase0-reports test test-network test-phase1 test-phase2 test-phase3 phase2-5 phase1-scorecard phase2-trust
+.PHONY: reports-dir verify-all verify-data shape-report phase0-reports test test-network test-phase1 test-phase2 test-phase3 phase2-5 phase1-scorecard phase2-trust phase3-backtest phase3-bridge
 
 reports-dir:
 	@mkdir -p "$(VALIDATION_DIR)"
@@ -51,6 +51,12 @@ phase1-scorecard: ## Run LOPO scorecard → data-validation-reports/PHASE1_SCORE
 
 phase2-trust: ## Run 1975-cut + source corroboration → PHASE2_TRUST.json
 	@$(PY) scripts/run_phase2_trust.py
+
+phase3-backtest: reports-dir ## Pre-registered 1975 banded backtest → PHASE3_BACKTEST.json
+	@$(PY) scripts/run_phase3_backtest.py
+
+phase3-bridge: reports-dir ## 1920+ dynamics backfill + holdout settle → PHASE3_BRIDGE.json
+	@$(PY) scripts/run_phase3_bridge.py
 
 test-network: ## Opt-in live URL probes (scrapers/APIs may 404/rotate)
 	@env -u HTTP_PROXY -u HTTPS_PROXY -u ALL_PROXY -u http_proxy -u https_proxy -u all_proxy \
