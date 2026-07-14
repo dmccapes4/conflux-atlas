@@ -1,0 +1,26 @@
+{
+  "n_transitions": 147,
+  "protocol": "leave_one_polity_out",
+  "policies": {
+    "hash_mode": {
+      "accuracy": 0.7246376811594203,
+      "n_scored": 69,
+      "coverage": 0.7006802721088435
+    },
+    "reversion": {
+      "accuracy": 0.7536231884057971,
+      "n_scored": 69,
+      "coverage": 0.7346938775510204
+    },
+    "persistence": {
+      "accuracy": 0.7681159420289855,
+      "n_scored": 69,
+      "coverage": 0.7346938775510204
+    },
+    "majority": {
+      "accuracy": 0.7971014492753623,
+      "n_scored": 69,
+      "coverage": 1.0
+    }
+  }
+}

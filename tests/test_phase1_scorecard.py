@@ -71,14 +71,16 @@ def test_scorecard_shape_and_bounds(mk_anchor) -> None:
 def test_scorecard_leave_one_polity_out_no_leakage(mk_anchor) -> None:
     """A polity's own transitions must never inform its hash_mode
     predictions. Construct a world where ONE polity moves up and all
-    others move down: if hash_mode leaks, it would predict 'up' for the
-    up-polity from its own rows. Without leakage the training buckets for
-    the up-polity only ever saw 'down'."""
+    others move down from the *same* origin level so origin hashes collide:
+    without leakage, training buckets for the up-polity only ever saw 'down'.
+    """
+    # Shared starting level → identical first-transition origin hashes
+    # (level|na|era|na). Divergent trajectories supply the outcomes.
     specs = {
-        "loner_up": [(1900, 0.40), (1950, 0.55), (2000, 0.70)],
-        "down_a": [(1900, 0.70), (1950, 0.55), (2000, 0.40)],
-        "down_b": [(1900, 0.72), (1950, 0.57), (2000, 0.42)],
-        "down_c": [(1900, 0.74), (1950, 0.59), (2000, 0.44)],
+        "loner_up": [(1900, 0.50), (1950, 0.65), (2000, 0.80)],
+        "down_a": [(1900, 0.50), (1950, 0.35), (2000, 0.20)],
+        "down_b": [(1900, 0.50), (1950, 0.34), (2000, 0.18)],
+        "down_c": [(1900, 0.50), (1950, 0.36), (2000, 0.22)],
     }
     anchors = []
     for pid, pts in specs.items():

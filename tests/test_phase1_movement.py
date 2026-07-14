@@ -228,17 +228,20 @@ def test_movement_events_same_year_dedupe(mk_anchor) -> None:
 def test_movement_event_carries_origin_place_hash(mk_anchor) -> None:
     """Each event is stamped with the hash of its ORIGIN place — the place
     you were in when the move began. This is what the Phase 1 scorecard
-    conditions on (predict transition direction from origin place)."""
+    conditions on (predict transition direction from origin place).
+
+    The delta slot is the *prior* transition's rate bin (or ``na`` on a
+    series' first event). Encoding *this* transition's delta would leak the
+    outcome into the lookup key and make hash_mode vacuously perfect.
+    """
     anchors = [
         mk_anchor("testland", 1900, {"muslim": 0.80}),
         mk_anchor("testland", 1950, {"muslim": 0.90}),
     ]
     ev = movement.movement_events(anchors, group="muslim")[0]
-    # level of origin share (0.80 → majority); first transition has no prior
-    # delta/vol history → prev-delta "na" is not part of the hash; vol is "na".
     assert ev.origin_hash == movement.place_hash(
         level="majority",
-        delta=movement.delta_bin(ev.rate_per_decade),
+        delta="na",
         gap=movement.gap_bin(ev.gap_years),
         vol="na",
     )

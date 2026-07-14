@@ -111,12 +111,13 @@ The most interesting technical bet, promoted from implicit to explicit:
 
 ### Phase 1 — Movement vectors & retrieval (weeks 2–6)
 
-- `conflux/movement.py`: year/decade-scale place-hash (retuned `delta/gap/level/vol` bins from ptv `lab_movement.py`); node/place vector = shares + velocity + volatility + confidence.
-- Cosine retrieval of similar polity-years (numpy; GPU only if the scorecard demands it).
-- Exploratory burst co-occurrence (N≈10 edges — descriptive only, say so).
-- **Ablation:** confidence-weighted vs unweighted vectors.
+- `conflux/movement.py`: year/decade-scale place-hash (retuned `delta/gap/level/vol` bins from ptv `lab_movement.py`); node/place vector = shares + velocity + volatility + confidence. → **Done**
+- Cosine retrieval of similar polity-years (numpy; GPU only if the scorecard demands it). → **Done**
+- Exploratory burst co-occurrence (N≈10 edges — descriptive only, say so). → *deferred* (not required by Phase 1 test contracts)
+- **Ablation:** confidence-weighted vs unweighted vectors. → **Hook shipped** (`place_vector(weighted=)`); research comparison not asserted in tests
+- Milestone scorecard: → **Done** — see `docs/REPORT_PHASE1_SCORECARD.md`. On the demo tape, **majority / persistence beat `hash_mode`** (honest miss; sparsity-limited).
 
-**Milestone:** hash-catalog scorecard vs a share-reversion baseline over the demo window, with methodology note.
+**Milestone:** hash-catalog scorecard vs a share-reversion baseline over the demo window, with methodology note. → *Reached (result: hash does not win yet).*
 
 ### Phase 2 — Settlement & trust (weeks 6–10)
 

@@ -57,7 +57,7 @@ Rules (each has a dedicated test):
 - **Missing group = share 0.0**, not an error — minorities appearing/vanishing is movement we care about (e.g. `jewish` share going 0.02 → absent).
 - **Same-year duplicates:** keep the higher-confidence anchor, drop the other. Never emit `gap_years == 0` (division by zero in the rate).
 - **Weakest-link confidence:** `event.confidence = min(conf_from, conf_to)`. A movement claim is only as strong as its weaker endpoint.
-- **`origin_hash`:** stamped from the *origin* place — `level_bin(share_from)`, `delta_bin(rate_per_decade)` of this transition, `gap_bin(gap_years)`, `vol_bin` over prior history (`"na"` for a series' first transition). This is what the scorecard conditions on.
+- **`origin_hash`:** stamped from the *origin* place — `level_bin(share_from)`, **`delta_bin(prior_rate)` or `"na"` if this is the series' first transition**, `gap_bin(gap_years)`, `vol_bin` over prior history (`"na"` with fewer than 2 priors). **Do not put this transition's own delta in the hash** — that would encode the outcome into the lookup key and make `hash_mode` vacuously perfect / break the leave-one-polity-out leakage contract. This is what the scorecard conditions on.
 
 ### 1.4 `direction(rate) -> "up" | "down" | "flat"`
 

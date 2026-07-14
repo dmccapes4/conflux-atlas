@@ -5,7 +5,7 @@
 
 VALIDATION_DIR ?= data-validation-reports
 
-.PHONY: reports-dir verify-all verify-data shape-report phase0-reports test test-network test-phase1
+.PHONY: reports-dir verify-all verify-data shape-report phase0-reports test test-network test-phase1 phase1-scorecard
 
 reports-dir:
 	@mkdir -p "$(VALIDATION_DIR)"
@@ -32,6 +32,9 @@ test-phase1: ## Phase 1 contracts only, with skip reasons (-rs) while unimplemen
 	@$(PY) -m pytest -q -rs -m phase1; rc=$$?; \
 	if [ $$rc -eq 5 ]; then echo "(phase1 modules not implemented yet — contracts all skipped)"; exit 0; fi; \
 	exit $$rc
+
+phase1-scorecard: ## Run LOPO scorecard → data-validation-reports/PHASE1_SCORECARD.json
+	@$(PY) scripts/run_phase1_scorecard.py
 
 test-network: ## Opt-in live URL probes (scrapers/APIs may 404/rotate)
 	@env -u HTTP_PROXY -u HTTPS_PROXY -u ALL_PROXY -u http_proxy -u https_proxy -u all_proxy \
