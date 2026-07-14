@@ -1,0 +1,75 @@
+{
+  "_comment": "Canonical download / API endpoints. When a host moves a file, update here AND the matching script. Default pytest asserts scripts still reference these strings (no network). Opt-in: pytest -m network.",
+  "endpoints": [
+    {
+      "id": "owid_population_csv",
+      "source_id": "owid_population",
+      "url": "https://ourworldindata.org/grapher/population.csv",
+      "scripts": ["scripts/download_migration_sources.sh"],
+      "probe": "head"
+    },
+    {
+      "id": "un_desa_ims_2024_od",
+      "source_id": "un_desa_ims",
+      "url": "https://www.un.org/development/desa/pd/sites/www.un.org.development.desa.pd/files/undesa_pd_2024_ims_stock_by_sex_destination_and_origin.xlsx",
+      "scripts": ["scripts/download_migration_sources.sh"],
+      "probe": "head"
+    },
+    {
+      "id": "un_desa_ims_2024_destination",
+      "source_id": "un_desa_ims",
+      "url": "https://www.un.org/development/desa/pd/sites/www.un.org.development.desa.pd/files/undesa_pd_2024_ims_stock_by_sex_and_destination.xlsx",
+      "scripts": ["scripts/download_migration_sources.sh"],
+      "probe": "head"
+    },
+    {
+      "id": "un_desa_ims_2024_origin",
+      "source_id": "un_desa_ims",
+      "url": "https://www.un.org/development/desa/pd/sites/www.un.org.development.desa.pd/files/undesa_pd_2024_ims_stock_by_sex_and_origin.xlsx",
+      "scripts": ["scripts/download_migration_sources.sh"],
+      "probe": "head"
+    },
+    {
+      "id": "un_desa_ims_2020_od",
+      "source_id": "un_desa_ims",
+      "url": "https://www.un.org/development/desa/pd/sites/www.un.org.development.desa.pd/files/undesa_pd_2020_ims_stock_by_sex_destination_and_origin.xlsx",
+      "scripts": ["scripts/download_migration_sources.sh"],
+      "probe": "head"
+    },
+    {
+      "id": "pcbs_projected_population",
+      "source_id": "pcbs_population",
+      "url": "https://www.pcbs.gov.ps/media/f4np1lnh/projected-population-in-the-palestine.xlsx",
+      "scripts": ["scripts/download_migration_sources.sh"],
+      "probe": "head"
+    },
+    {
+      "id": "arab_barometer_wave_viii",
+      "source_id": "arab_barometer",
+      "url": "https://www.arabbarometer.org/wp-content/uploads/ArabBarometer_WaveVIII_English_v2.zip",
+      "scripts": ["scripts/download_migration_sources.sh"],
+      "probe": "head"
+    },
+    {
+      "id": "unhcr_population_api",
+      "source_id": "unhcr_population_api",
+      "url": "https://api.unhcr.org/population/v1/population/",
+      "scripts": ["scripts/fetch_unhcr_api.py"],
+      "probe": "get"
+    },
+    {
+      "id": "wikipedia_ottoman_demographics_api",
+      "source_id": "ottoman_demographics_wiki",
+      "url": "https://en.wikipedia.org/w/api.php",
+      "scripts": ["scripts/scrape_ottoman_wiki.py"],
+      "probe": "get"
+    },
+    {
+      "id": "jewishdatabank_search_api",
+      "source_id": "jewishdatabank_world_jewish_population",
+      "url": "https://www.jewishdatabank.org/api/search",
+      "scripts": ["scripts/list_jewishdatabank_wjp_urls.py"],
+      "probe": "get"
+    }
+  ]
+}
