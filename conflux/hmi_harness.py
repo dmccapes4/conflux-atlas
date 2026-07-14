@@ -41,6 +41,12 @@ from .llm_enrich import (
 
 OPENAI_URL = "https://api.openai.com/v1/chat/completions"
 
+# Completion cap. Correct answers for any window in this harness are a few
+# hundred tokens; greedy decode on small models can fall into repeat loops
+# and generate until the request timeout (observed: 300s on llama3.2:3b).
+# A looping model should fail fast and pay as a malformed window.
+MAX_COMPLETION_TOKENS = 2048
+
 
 # ---------------------------------------------------------------------------
 # Telemetry
@@ -103,7 +109,7 @@ class OllamaHarnessClient(OllamaClient):
             "format": schema,
             "stream": False,
             "think": False,
-            "options": dict(DECODE_OPTIONS),
+            "options": {**DECODE_OPTIONS, "num_predict": MAX_COMPLETION_TOKENS},
         }
         t0 = time.monotonic()
         prompt_tokens = completion_tokens = 0
@@ -206,6 +212,7 @@ class OpenAIHarnessClient:
             ],
             "temperature": 0.0,
             "seed": int(DECODE_OPTIONS.get("seed", 42)),
+            "max_tokens": MAX_COMPLETION_TOKENS,
             "response_format": {
                 "type": "json_schema",
                 "json_schema": {
