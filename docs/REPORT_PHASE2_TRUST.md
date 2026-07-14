@@ -1,5 +1,7 @@
 # REPORT — Phase 2 Trust Ledger (Settlement Gate)
 
+> **Superseded on the source-ledger question by [`REPORT_PHASE2_5_SOURCES_PORTALGC.md`](REPORT_PHASE2_5_SOURCES_PORTALGC.md)** — which excludes hand seeds (in-house authorship makes §3 below partially circular: the 2000 seeds were written with knowledge of the Pew era, and the flat ±5pp tolerance mints free successes on trace shares), widens the ledger to seven real ingested sources, and finally settles Pew itself.
+
 **Date:** 14 July 2026  
 **Protocol:** 1975-cut policy claims + forward source corroboration  
 **Artifact:** `data-validation-reports/PHASE2_TRUST.json`  
