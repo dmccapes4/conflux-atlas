@@ -5,7 +5,7 @@
 
 VALIDATION_DIR ?= data-validation-reports
 
-.PHONY: reports-dir verify-all verify-data shape-report phase0-reports test test-network test-phase1 test-phase2 phase2-5 phase1-scorecard phase2-trust
+.PHONY: reports-dir verify-all verify-data shape-report phase0-reports test test-network test-phase1 test-phase2 test-phase3 phase2-5 phase1-scorecard phase2-trust
 
 reports-dir:
 	@mkdir -p "$(VALIDATION_DIR)"
@@ -36,6 +36,11 @@ test-phase1: ## Phase 1 contracts only, with skip reasons (-rs) while unimplemen
 test-phase2: ## Phase 2 contracts only, with skip reasons (-rs) while unimplemented
 	@$(PY) -m pytest -q -rs -m phase2; rc=$$?; \
 	if [ $$rc -eq 5 ]; then echo "(phase2 modules not implemented yet — contracts all skipped)"; exit 0; fi; \
+	exit $$rc
+
+test-phase3: ## Phase 3 contracts only, with skip reasons (-rs) while unimplemented
+	@$(PY) -m pytest -q -rs -m phase3; rc=$$?; \
+	if [ $$rc -eq 5 ]; then echo "(phase3 modules not implemented yet — contracts all skipped)"; exit 0; fi; \
 	exit $$rc
 
 phase2-5: reports-dir ## Expanded source ledger + PortalGC sweep → data-validation-reports/PHASE2_5_*.json
