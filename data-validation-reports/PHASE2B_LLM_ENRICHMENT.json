@@ -1,17 +1,23 @@
 {
   "model": "qwen3:8b",
-  "windows_run": 6,
+  "windows_run": 40,
   "windows_failed": 0,
-  "proposals": 56,
-  "verified": 50,
-  "rejected": 6,
+  "proposals": 467,
+  "verified": 458,
+  "rejected": 9,
   "proposer_posterior": {
-    "alpha": 51.0,
-    "beta": 7.0,
-    "trials": 56,
-    "mean": 0.8793103448275862,
-    "variance": 0.0017987061407928415
+    "alpha": 459.0,
+    "beta": 10.0,
+    "trials": 467,
+    "mean": 0.9786780383795309,
+    "variance": 4.439858632579644e-05
   },
   "verified_event_attributions": [],
-  "n_verified_coupling_edges": 50
+  "n_verified_coupling_edges": 458,
+  "timing": {
+    "n_calls": 40,
+    "avg_call_seconds": 16.95,
+    "max_call_seconds": 19.37,
+    "total_run_seconds": 677.86
+  }
 }
