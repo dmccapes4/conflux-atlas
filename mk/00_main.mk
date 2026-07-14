@@ -11,7 +11,8 @@ SHELL := /bin/bash
 ROOT := $(abspath $(dir $(lastword $(MAKEFILE_LIST)))/..)
 export PYTHONPATH := $(ROOT)
 
-PY ?= $(shell if [ -x "$(ROOT)/.venv/bin/python" ]; then echo "$(ROOT)/.venv/bin/python"; \
+PY ?= $(shell if [ -x "$(ROOT)/conflux_venv/bin/python" ]; then echo "$(ROOT)/conflux_venv/bin/python"; \
+	elif [ -x "$(ROOT)/.venv/bin/python" ]; then echo "$(ROOT)/.venv/bin/python"; \
 	elif [ -x "$(ROOT)/venv/bin/python" ]; then echo "$(ROOT)/venv/bin/python"; \
 	else command -v python3; fi)
 
