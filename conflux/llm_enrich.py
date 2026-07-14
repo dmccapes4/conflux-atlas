@@ -26,10 +26,14 @@ Protocol invariants (STRATEGY_CONNASCENCE.md §3):
 from __future__ import annotations
 
 import json
+import time
 import urllib.error
 import urllib.request
 from dataclasses import dataclass, field
-from typing import Any, Sequence
+from typing import Any, Callable, Sequence
+
+# progress(windows_done, windows_total, seconds_for_this_window)
+ProgressFn = Callable[[int, int, float], None]
 
 from .connascence import (
     ConnascenceEdge,
@@ -359,6 +363,7 @@ class EnrichmentResult:
     proposals: int = 0
     verified: int = 0
     rejected: int = 0
+    abstained: int = 0  # null answers — free by design, but worth seeing
     verified_event_edges: list[dict[str, Any]] = field(default_factory=list)
     verified_coupling_edges: list[ConnascenceEdge] = field(default_factory=list)
 
@@ -376,14 +381,19 @@ def enrich_event_attribution(
     result: EnrichmentResult,
     *,
     window_size: int = WINDOW_SIZE,
+    progress: ProgressFn | None = None,
 ) -> None:
     events_by_id = {e.event_id: e for e in events}
     clusters_by_id = {c.cluster_id: c for c in clusters}
     hyp = f"llm_proposer:{client.model}"
 
-    for window in _windows(list(clusters), window_size):
+    windows = _windows(list(clusters), window_size)
+    for i, window in enumerate(windows):
+        t0 = time.monotonic()
         out = client.chat_json(_EVENT_SYSTEM, _cluster_prompt(window, events), _EVENT_SCHEMA)
         result.windows_run += 1
+        if progress is not None:
+            progress(i + 1, len(windows), time.monotonic() - t0)
         if out is None:
             result.windows_failed += 1
             continue
@@ -393,6 +403,7 @@ def enrich_event_attribution(
                 continue
             eid = row.get("event_id")
             if eid is None:
+                result.abstained += 1
                 continue  # abstention: no claim, no penalty, no credit
             ev = events_by_id.get(str(eid))
             result.proposals += 1
@@ -441,21 +452,29 @@ def enrich_conceptual_couplings(
     result: EnrichmentResult,
     *,
     window_size: int = WINDOW_SIZE,
+    progress: ProgressFn | None = None,
 ) -> None:
     pairs_by_id = {p.pair_id: p for p in pairs}
     hyp = f"llm_proposer:{client.model}"
 
-    for window in _windows(list(pairs), window_size):
+    windows = _windows(list(pairs), window_size)
+    for i, window in enumerate(windows):
+        t0 = time.monotonic()
         out = client.chat_json(_COUPLING_SYSTEM, _pair_prompt(window), _COUPLING_SCHEMA)
         result.windows_run += 1
+        if progress is not None:
+            progress(i + 1, len(windows), time.monotonic() - t0)
         if out is None:
             result.windows_failed += 1
             continue
         for row in out.get("proposals", []):
             p = pairs_by_id.get(str(row.get("pair_id", "")))
+            if p is None:
+                continue  # unknown pair_id — not an abstention
             kind = row.get("kind")
-            if p is None or kind is None:
-                continue  # null = abstention
+            if kind is None:
+                result.abstained += 1
+                continue
             kind = str(kind)
             result.proposals += 1
             claim = Claim(

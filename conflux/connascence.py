@@ -794,6 +794,51 @@ def tag_shock_claims(claims: Sequence[Claim], events: Sequence[Event]) -> int:
     return n
 
 
+def _event_touches_polity(
+    event: Event, polity_id: str, migration_edges: Sequence[Any]
+) -> bool:
+    if polity_id in event.affected_polities:
+        return True
+    for me in migration_edges:
+        if me.trigger_event_id == event.event_id and polity_id in (
+            me.from_polity,
+            me.to_polity,
+        ):
+            return True
+    return False
+
+
+def tag_shock_claims_contact(
+    claims: Sequence[Claim],
+    events: Sequence[Event],
+    migration_edges: Sequence[Any] = (),
+) -> int:
+    """Polity-aware shock tagging (Phase 3 E5).
+
+    Window-only tagging degenerates on forecast claims: a cut→target window
+    spans decades, so *any* event anywhere tags *every* claim (calm n=0).
+    Here an event tags a claim only if it also touches the claim's polity —
+    via ``affected_polities`` or a migration edge it triggered (same contact
+    rule as ``verify_event_attribution``).
+    """
+    n = 0
+    for c in claims:
+        hits = [
+            eid
+            for eid in shock_events_for_window(c.year_from, c.year_to, events)
+            if _event_touches_polity(
+                next(e for e in events if e.event_id == eid),
+                c.polity_id,
+                migration_edges,
+            )
+        ]
+        c.meta["shock"] = bool(hits)
+        c.meta["shock_events"] = hits
+        if hits:
+            n += 1
+    return n
+
+
 def split_calm_shock(claims: Sequence[Claim]) -> dict[str, list[Claim]]:
     out: dict[str, list[Claim]] = {"calm": [], "shock": []}
     for c in claims:

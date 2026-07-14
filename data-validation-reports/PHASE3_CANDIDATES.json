@@ -1,0 +1,469 @@
+{
+  "design": "candidates fit on even half (weights, width), one shot on odd half @1975",
+  "success_rule": "candidate_beats_all_baselines_on_primary_metric",
+  "ensemble_weights": [
+    0.0,
+    0.0,
+    1.0
+  ],
+  "width_model": "w3",
+  "report": {
+    "policies": {
+      "persistence": {
+        "n": 69,
+        "coverage_observed": 0.6811594202898551,
+        "coverage_wilson95": [
+          0.564,
+          0.779
+        ],
+        "mean_interval_score": 0.4256862917377758,
+        "mean_width": 0.384996531173467,
+        "calm": {
+          "n": 49,
+          "coverage_observed": 0.6122448979591837,
+          "coverage_wilson95": [
+            0.472,
+            0.736
+          ],
+          "mean_interval_score": 0.3324294157947974,
+          "mean_width": 0.2825513990445891
+        },
+        "shock": {
+          "n": 20,
+          "coverage_observed": 0.85,
+          "coverage_wilson95": [
+            0.64,
+            0.948
+          ],
+          "mean_interval_score": 0.654165637798073,
+          "mean_width": 0.6359871048892178
+        },
+        "by_target_source": {
+          "arab_barometer": {
+            "n": 19,
+            "coverage_observed": 0.6842105263157895,
+            "coverage_wilson95": [
+              0.46,
+              0.846
+            ],
+            "mean_interval_score": 0.27529601841105367,
+            "mean_width": 0.2431363053719195
+          },
+          "arda_national_profiles_2005": {
+            "n": 17,
+            "coverage_observed": 0.5882352941176471,
+            "coverage_wilson95": [
+              0.36,
+              0.784
+            ],
+            "mean_interval_score": 0.35808673659563717,
+            "mean_width": 0.3020405263616438
+          },
+          "cbs_population_madaf": {
+            "n": 5,
+            "coverage_observed": 1.0,
+            "coverage_wilson95": [
+              0.566,
+              1.0
+            ],
+            "mean_interval_score": 1.0,
+            "mean_width": 1.0
+          },
+          "jewishdatabank_world_jewish_population": {
+            "n": 1,
+            "coverage_observed": 0.0,
+            "coverage_wilson95": [
+              0.0,
+              0.793
+            ],
+            "mean_interval_score": 0.0063492063492063405,
+            "mean_width": 0.0
+          },
+          "pew_global_religious_composition_2010_2020": {
+            "n": 27,
+            "coverage_observed": 0.7037037037037037,
+            "coverage_wilson95": [
+              0.515,
+              0.841
+            ],
+            "mean_interval_score": 0.4832557796896842,
+            "mean_width": 0.43742525558351136
+          }
+        }
+      },
+      "reversion": {
+        "n": 64,
+        "coverage_observed": 0.8125,
+        "coverage_wilson95": [
+          0.7,
+          0.889
+        ],
+        "mean_interval_score": 0.4820046770725919,
+        "mean_width": 0.45812352631835657,
+        "calm": {
+          "n": 44,
+          "coverage_observed": 0.7954545454545454,
+          "coverage_wilson95": [
+            0.655,
+            0.888
+          ],
+          "mean_interval_score": 0.38408958421640177,
+          "mean_width": 0.357616334441539
+        },
+        "shock": {
+          "n": 20,
+          "coverage_observed": 0.85,
+          "coverage_wilson95": [
+            0.64,
+            0.948
+          ],
+          "mean_interval_score": 0.6974178813562103,
+          "mean_width": 0.6792393484473552
+        },
+        "by_target_source": {
+          "arab_barometer": {
+            "n": 19,
+            "coverage_observed": 0.8421052631578947,
+            "coverage_wilson95": [
+              0.624,
+              0.945
+            ],
+            "mean_interval_score": 0.3080739737661682,
+            "mean_width": 0.29176356644630347
+          },
+          "arda_national_profiles_2005": {
+            "n": 13,
+            "coverage_observed": 0.7692307692307693,
+            "coverage_wilson95": [
+              0.497,
+              0.918
+            ],
+            "mean_interval_score": 0.4918040389892267,
+            "mean_width": 0.443202056752118
+          },
+          "cbs_population_madaf": {
+            "n": 5,
+            "coverage_observed": 1.0,
+            "coverage_wilson95": [
+              0.566,
+              1.0
+            ],
+            "mean_interval_score": 1.0,
+            "mean_width": 1.0
+          },
+          "pew_global_religious_composition_2010_2020": {
+            "n": 27,
+            "coverage_observed": 0.7777777777777778,
+            "coverage_wilson95": [
+              0.592,
+              0.894
+            ],
+            "mean_interval_score": 0.503757086082546,
+            "mean_width": 0.48202856237472297
+          }
+        }
+      },
+      "ar1": {
+        "n": 8,
+        "coverage_observed": 1.0,
+        "coverage_wilson95": [
+          0.676,
+          1.0
+        ],
+        "mean_interval_score": 1.0,
+        "mean_width": 1.0,
+        "calm": {
+          "n": 0
+        },
+        "shock": {
+          "n": 8,
+          "coverage_observed": 1.0,
+          "coverage_wilson95": [
+            0.676,
+            1.0
+          ],
+          "mean_interval_score": 1.0,
+          "mean_width": 1.0
+        },
+        "by_target_source": {
+          "arda_national_profiles_2005": {
+            "n": 1,
+            "coverage_observed": 1.0,
+            "coverage_wilson95": [
+              0.207,
+              1.0
+            ],
+            "mean_interval_score": 1.0,
+            "mean_width": 1.0
+          },
+          "cbs_population_madaf": {
+            "n": 5,
+            "coverage_observed": 1.0,
+            "coverage_wilson95": [
+              0.566,
+              1.0
+            ],
+            "mean_interval_score": 1.0,
+            "mean_width": 1.0
+          },
+          "pew_global_religious_composition_2010_2020": {
+            "n": 2,
+            "coverage_observed": 1.0,
+            "coverage_wilson95": [
+              0.342,
+              1.0
+            ],
+            "mean_interval_score": 1.0,
+            "mean_width": 1.0
+          }
+        }
+      },
+      "climatology": {
+        "n": 642,
+        "coverage_observed": 0.838006230529595,
+        "coverage_wilson95": [
+          0.808,
+          0.864
+        ],
+        "mean_interval_score": 0.9758890813324586,
+        "mean_width": 0.9595363823247416,
+        "calm": {
+          "n": 622,
+          "coverage_observed": 0.837620578778135,
+          "coverage_wilson95": [
+            0.807,
+            0.865
+          ],
+          "mean_interval_score": 0.9772515656203291,
+          "mean_width": 0.9607932708544863
+        },
+        "shock": {
+          "n": 20,
+          "coverage_observed": 0.85,
+          "coverage_wilson95": [
+            0.64,
+            0.948
+          ],
+          "mean_interval_score": 0.9335158199796831,
+          "mean_width": 0.9204471490496833
+        },
+        "by_target_source": {
+          "arab_barometer": {
+            "n": 50,
+            "coverage_observed": 0.58,
+            "coverage_wilson95": [
+              0.442,
+              0.706
+            ],
+            "mean_interval_score": 1.0177580330232399,
+            "mean_width": 0.9670000000000001
+          },
+          "arda_national_profiles_2005": {
+            "n": 211,
+            "coverage_observed": 0.8815165876777251,
+            "coverage_wilson95": [
+              0.831,
+              0.918
+            ],
+            "mean_interval_score": 0.9661331502281246,
+            "mean_width": 0.957398951309204
+          },
+          "cbs_population_madaf": {
+            "n": 5,
+            "coverage_observed": 1.0,
+            "coverage_wilson95": [
+              0.566,
+              1.0
+            ],
+            "mean_interval_score": 0.8536178726242081,
+            "mean_width": 0.8536178726242081
+          },
+          "jewishdatabank_world_jewish_population": {
+            "n": 2,
+            "coverage_observed": 1.0,
+            "coverage_wilson95": [
+              0.342,
+              1.0
+            ],
+            "mean_interval_score": 0.8536178726242081,
+            "mean_width": 0.8536178726242081
+          },
+          "pew_global_religious_composition_2010_2020": {
+            "n": 374,
+            "coverage_observed": 0.8449197860962567,
+            "coverage_wilson95": [
+              0.805,
+              0.878
+            ],
+            "mean_interval_score": 0.9780841410635632,
+            "mean_width": 0.9617268813312102
+          }
+        }
+      },
+      "analog": {
+        "n": 64,
+        "coverage_observed": 0.71875,
+        "coverage_wilson95": [
+          0.599,
+          0.814
+        ],
+        "mean_interval_score": 0.41517640189282246,
+        "mean_width": 0.1698178125,
+        "calm": {
+          "n": 44,
+          "coverage_observed": 0.6590909090909091,
+          "coverage_wilson95": [
+            0.511,
+            0.781
+          ],
+          "mean_interval_score": 0.4832030994543643,
+          "mean_width": 0.17353409090909092
+        },
+        "shock": {
+          "n": 20,
+          "coverage_observed": 0.85,
+          "coverage_wilson95": [
+            0.64,
+            0.948
+          ],
+          "mean_interval_score": 0.26551766725743037,
+          "mean_width": 0.16164199999999995
+        },
+        "by_target_source": {
+          "arab_barometer": {
+            "n": 19,
+            "coverage_observed": 0.6842105263157895,
+            "coverage_wilson95": [
+              0.46,
+              0.846
+            ],
+            "mean_interval_score": 0.34499034518667954,
+            "mean_width": 0.19726315789473686
+          },
+          "arda_national_profiles_2005": {
+            "n": 13,
+            "coverage_observed": 0.6923076923076923,
+            "coverage_wilson95": [
+              0.424,
+              0.873
+            ],
+            "mean_interval_score": 0.33938354550720956,
+            "mean_width": 0.13993076923076922
+          },
+          "cbs_population_madaf": {
+            "n": 5,
+            "coverage_observed": 1.0,
+            "coverage_wilson95": [
+              0.566,
+              1.0
+            ],
+            "mean_interval_score": 0.19476799999999989,
+            "mean_width": 0.19476799999999989
+          },
+          "pew_global_religious_composition_2010_2020": {
+            "n": 27,
+            "coverage_observed": 0.7037037037037037,
+            "coverage_wilson95": [
+              0.515,
+              0.841
+            ],
+            "mean_interval_score": 0.5418758174444446,
+            "mean_width": 0.16027407407407407
+          }
+        }
+      },
+      "ensemble": {
+        "n": 8,
+        "coverage_observed": 1.0,
+        "coverage_wilson95": [
+          0.676,
+          1.0
+        ],
+        "mean_interval_score": 1.0,
+        "mean_width": 1.0,
+        "calm": {
+          "n": 0
+        },
+        "shock": {
+          "n": 8,
+          "coverage_observed": 1.0,
+          "coverage_wilson95": [
+            0.676,
+            1.0
+          ],
+          "mean_interval_score": 1.0,
+          "mean_width": 1.0
+        },
+        "by_target_source": {
+          "arda_national_profiles_2005": {
+            "n": 1,
+            "coverage_observed": 1.0,
+            "coverage_wilson95": [
+              0.207,
+              1.0
+            ],
+            "mean_interval_score": 1.0,
+            "mean_width": 1.0
+          },
+          "cbs_population_madaf": {
+            "n": 5,
+            "coverage_observed": 1.0,
+            "coverage_wilson95": [
+              0.566,
+              1.0
+            ],
+            "mean_interval_score": 1.0,
+            "mean_width": 1.0
+          },
+          "pew_global_religious_composition_2010_2020": {
+            "n": 2,
+            "coverage_observed": 1.0,
+            "coverage_wilson95": [
+              0.342,
+              1.0
+            ],
+            "mean_interval_score": 1.0,
+            "mean_width": 1.0
+          }
+        }
+      }
+    },
+    "n_settled": 855
+  },
+  "verdicts": {
+    "analog": {
+      "entered": true,
+      "mean_interval_score": 0.41517640189282246,
+      "beats": {
+        "persistence": true,
+        "reversion": true,
+        "ar1": true
+      },
+      "beats_all_baselines": true
+    },
+    "ensemble": {
+      "entered": true,
+      "mean_interval_score": 1.0,
+      "beats": {
+        "persistence": false,
+        "reversion": false,
+        "ar1": false
+      },
+      "beats_all_baselines": false
+    },
+    "analog_vs_persistence_paired": {
+      "n_paired": 64,
+      "mean_is_a": 0.45651462628323436,
+      "mean_is_b": 0.41517640189282246,
+      "mean_diff_a_minus_b": 0.041338224390411904,
+      "diff_bootstrap95": [
+        -0.11338838234519642,
+        0.18364513494623202
+      ],
+      "b_wins_on": 33,
+      "a_abstained_extra": 0,
+      "b_abstained_extra": 5
+    }
+  },
+  "best_baseline": "persistence"
+}

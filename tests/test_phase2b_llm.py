@@ -237,6 +237,7 @@ def test_null_attribution_is_free_abstention():
     )
     enrich_event_attribution(client, [_cluster()], [_event()], [], store, result)
     assert result.proposals == 0
+    assert result.abstained == 1
     assert store.get("llm_proposer:fake-enricher").trials == 0
     assert store.ledger == []
 
