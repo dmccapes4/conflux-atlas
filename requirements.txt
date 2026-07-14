@@ -6,3 +6,6 @@ pydantic>=2.6
 openpyxl>=3.1
 pyreadstat>=1.2
 provenance-engine>=0.2  # PortalGC governance experiment (report-only; see STRATEGY v0.2 §8.C)
+imageio>=2.37  # alpha film render (scripts/render_movie_alpha_film.py)
+imageio-ffmpeg>=0.5  # bundled ffmpeg for record + mux (no system ffmpeg needed)
+piper-tts>=1.4  # offline narration voice (scripts/build_movie_narration.py)
