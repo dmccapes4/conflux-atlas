@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Conflux Atlas — Alpha Movie</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Literata:opsz,wght@7..72,400;7..72,600;7..72,700&family=Syne:wght@500;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/movie.css" />
+</head>
+<body>
+  <div id="app">
+    <header class="chrome-top">
+      <div class="brand">
+        <span class="brand-mark">CA</span>
+        <div>
+          <div class="brand-name">Conflux Atlas</div>
+          <div class="brand-sub">Alpha simulation · MENA + diaspora</div>
+        </div>
+      </div>
+      <nav class="tabs" role="tablist" aria-label="Views">
+        <button class="tab active" data-view="map" role="tab" aria-selected="true">Map</button>
+        <button class="tab" data-view="data" role="tab">Data</button>
+        <button class="tab" data-view="sources" role="tab">Source weighting</button>
+      </nav>
+      <div class="tour-controls">
+        <button id="btn-tour" class="btn primary">Start tour</button>
+        <button id="btn-tour-pause" class="btn ghost hidden">Pause tour</button>
+        <button id="btn-mute" class="btn ghost" title="Toggle narration">Voice on</button>
+      </div>
+    </header>
+
+    <aside id="narration" class="narration" aria-live="polite">
+      <div class="narration-phase" id="phase-label">Ready</div>
+      <p id="narration-text">Press <strong>Start tour</strong> for a guided walk-through — or scrub the timeline yourself.</p>
+      <div class="math-panel hidden" id="math-panel">
+        <div class="math-title" id="math-title"></div>
+        <pre id="math-body"></pre>
+      </div>
+      <div class="gate hidden" id="gate">
+        <button id="btn-continue" class="btn primary">Continue ▸</button>
+        <button id="btn-replay" class="btn ghost">↺ Replay beacon</button>
+      </div>
+    </aside>
+
+    <main id="stage">
+      <section id="view-map" class="view active" data-view="map">
+        <canvas id="map-canvas"></canvas>
+        <div class="map-hud">
+          <div class="hud-chip" id="hud-year">1900</div>
+          <div class="hud-chip" id="hud-event">—</div>
+          <div class="legend">
+            <span><i class="swatch" style="background:#c44"></i> Muslim → R</span>
+            <span><i class="swatch" style="background:#4a8"></i> Christian → G</span>
+            <span><i class="swatch" style="background:#48a"></i> Jewish → B</span>
+            <span>Fill opacity = confidence</span>
+            <span>Arcs = migration</span>
+          </div>
+        </div>
+        <div id="outro-veil" class="outro-veil hidden"></div>
+      </section>
+
+      <section id="view-data" class="view" data-view="data">
+        <div class="data-toolbar">
+          <span class="muted">Featured polities at the current year — click a card for the full readout.</span>
+          <button id="btn-show-all" class="btn ghost">Show all 28</button>
+        </div>
+        <div class="data-grid" id="data-grid"></div>
+        <div class="detail-drawer hidden" id="detail-drawer">
+          <button class="drawer-close" id="drawer-close">×</button>
+          <h2 id="detail-title">Polity</h2>
+          <p id="detail-blurb" class="muted"></p>
+          <canvas id="hist-canvas" width="640" height="280"></canvas>
+          <canvas id="tl-canvas" width="640" height="200"></canvas>
+          <pre id="detail-math" class="math-inline"></pre>
+        </div>
+      </section>
+
+      <section id="view-sources" class="view" data-view="sources">
+        <div class="sources-layout">
+          <div class="sources-list" id="sources-list"></div>
+          <div class="sources-viz">
+            <canvas id="beta-canvas" width="720" height="360"></canvas>
+            <div class="settle-feed" id="settle-feed"></div>
+            <pre class="math-inline" id="settle-math"></pre>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="chrome-bottom">
+      <div class="timeline-wrap">
+        <input type="range" id="year-slider" min="1900" max="2025" value="1900" />
+        <div class="ticks" id="event-ticks"></div>
+      </div>
+      <div class="transport">
+        <button id="btn-play" class="btn">Play</button>
+        <div class="speed-presets" role="group" aria-label="Playback speed">
+          <button class="btn speed-btn" data-speed="0.5">0.5×</button>
+          <button class="btn speed-btn active" data-speed="1">1×</button>
+          <button class="btn speed-btn" data-speed="2">2×</button>
+          <button class="btn speed-btn" data-speed="4">4×</button>
+        </div>
+        <span class="year-readout" id="year-readout">1900</span>
+        <span class="alpha-tag">α build · not posterior</span>
+      </div>
+    </footer>
+  </div>
+  <script type="module" src="js/main.js"></script>
+</body>
+</html>

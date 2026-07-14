@@ -9,3 +9,5 @@ data/raw/
 data-validation-reports/VERIFY_2*.md
 *.sav
 *.zip
+conflux_venv/
+movie-alpha/film/narration.wav

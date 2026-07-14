@@ -15,7 +15,8 @@ PY ?= $(shell if [ -x "$(ROOT)/.venv/bin/python" ]; then echo "$(ROOT)/.venv/bin
 	elif [ -x "$(ROOT)/venv/bin/python" ]; then echo "$(ROOT)/venv/bin/python"; \
 	else command -v python3; fi)
 
-.PHONY: help smoke demo env-doctor
+.PHONY: help smoke demo env-doctor movie-alpha movie-alpha-export \
+	movie-alpha-basemap movie-alpha-film
 
 help: ## List MakefileBook targets
 	@grep -hE '^[a-zA-Z0-9_\-]+:.*?## .*$$' $(MAKEFILE_LIST) | \
@@ -34,3 +35,17 @@ smoke: ## Run pygame demo smoke (--smoke)
 
 demo: ## Run interactive pygame demo
 	@$(PY) main.py
+
+movie-alpha-export: ## Rebuild movie-alpha/data/atlas.json from ConfluxModel
+	@PYTHONPATH="$(ROOT)" "$(PY)" "$(ROOT)/scripts/export_movie_alpha.py"
+
+movie-alpha-basemap: ## Rebuild movie-alpha/assets/world_frame.json from Natural Earth
+	@"$(PY)" "$(ROOT)/scripts/build_movie_basemap.py"
+
+movie-alpha: movie-alpha-export ## Serve alpha simulation movie (reuses live server if up)
+	@"$(PY)" "$(ROOT)/scripts/serve_movie_alpha.py"
+
+movie-alpha-film: ## Narrate + render + mux the alpha film (narration first: it sets the clock)
+	@"$(PY)" "$(ROOT)/scripts/build_movie_narration.py"
+	@"$(PY)" "$(ROOT)/scripts/render_movie_alpha_film.py"
+	@"$(PY)" "$(ROOT)/scripts/mux_movie_alpha.py"

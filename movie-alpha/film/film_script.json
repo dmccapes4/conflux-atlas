@@ -1,0 +1,80 @@
+{
+  "duration": 202.7702721088435,
+  "captions": [
+    [
+      0.0,
+      13.038004535147392,
+      "This is a real map \u2014 Morocco to Iran, Europe down to the Sahel. Demographics here get argued endlessly, but almost nobody keeps score. Conflux Atlas tracks religious shares and migrations as claims that can be settled later."
+    ],
+    [
+      14.138004535147392,
+      25.051383219954648,
+      "Everything outside the desk fades to grey: out of scope, on purpose. Outlines mix Muslim red, Christian green, Jewish blue. Fill brightness is confidence \u2014 bright means a recent citation."
+    ],
+    [
+      26.151383219954646,
+      39.53768707482993,
+      "One mechanism matters. A source claims Egypt stays at least ninety percent Muslim through twenty twenty. Years later a census band arrives \u2014 hit or miss. Only then does that source's trust move. Recording is free; settlement moves belief."
+    ],
+    [
+      40.63768707482993,
+      46.44267573696145,
+      "Starting the clock at nineteen hundred. Fills dim between anchors \u2014 that is honesty, not a rendering bug."
+    ],
+    [
+      50.54267573696144,
+      57.822131519274365,
+      "The data desk, with no map poetry: population, confidence, and shares per polity, held from the last cited anchor."
+    ],
+    [
+      61.922131519274366,
+      74.18226757369614,
+      "And the scorekeeper: trust posteriors per source. Watch belief move only when outcomes land \u2014 alpha up on a hit, beta up on a miss. Run enough census rounds and you get a calibrated ledger of who to believe about demography."
+    ],
+    [
+      79.28226757369613,
+      84.91310657596371,
+      "Back to the map for the part history remembers: five events, nineteen twenty-three to twenty eleven."
+    ],
+    [
+      89.0131065759637,
+      96.50154195011336,
+      "Lausanne population exchange. Greece \u2194 Turkey: a forced bilateral swap. Watch the edge thicken and node bands twitch."
+    ],
+    [
+      106.95154195011335,
+      116.4833333333333,
+      "1948 war & Jewish exodus corridors. Multiple origin\u2192Israel bursts. Israel's Jewish band grows; source countries lose Jewish share."
+    ],
+    [
+      127.58333333333331,
+      133.35349206349204,
+      "Lebanese Civil War. Outflows to France and neighbors. Confidence bleeds where citations go quiet."
+    ],
+    [
+      139.45349206349204,
+      145.10755102040812,
+      "Iranian Revolution. Jewish emigration toward Israel \u2014 a thin but sharp edge on the map."
+    ],
+    [
+      156.20755102040815,
+      166.52882086167799,
+      "Syrian Civil War refugees. UNHCR-scale stocks to Turkey, Lebanon, Jordan, Egypt, Germany, Iraq. Stocks \u2260 flows \u2014 we say so."
+    ],
+    [
+      169.62882086167798,
+      171.2542176870748,
+      "Rolling forward to the present day."
+    ],
+    [
+      180.3542176870748,
+      193.51993197278907,
+      "Alpha findings, said plainly: the map is a view over sparse citations, not a crystal ball. Shock windows hurt prediction accuracy. Settlement moves trust. And a miss on the nineteen seventy-five prediction cut is still a result."
+    ],
+    [
+      194.6199319727891,
+      199.6702721088435,
+      "That is the system in miniature. Conflux Atlas \u2014 a ledger of who to believe about demography."
+    ]
+  ]
+}
