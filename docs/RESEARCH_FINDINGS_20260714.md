@@ -103,7 +103,7 @@ Cuts 1950/1975/1990 produce byte-identical anchor tapes (no train data 1950–20
 
 ### 6.2 Width ablation with leakage-safe selection (E3)
 
-Cross-cut selection would leak (cut-1950/1990 tapes share realized 2005–2020 target rows with the 1975 tape), so selection used a deterministic **series split**: sha1(polity|group) even → selection, odd → confirmatory. Four width models: w0 (above); w1 walk-forward residual quantiles; w2 level-conditional dynamics σ; w3 **conformal inflation** — w0 shape × the smallest λ (grid) achieving 0.80 empirical coverage on *pre-cut* walk-forward folds. Selection (min mean |cov − 0.80|): w3 (0.003) ≫ w0/w1 (0.161) > w2 (0.200); fitted λ = 2.5 / 3.0 / 1.0 (persistence/reversion/ar1).
+Cross-cut selection would leak (cut-1950/1990 tapes share realized 2005–2020 target rows with the 1975 tape), so selection used a deterministic **series split**: sha1(polity|group) even → selection, odd → confirmatory. Four width models: w0 (above); w1 walk-forward residual quantiles; w2 level-conditional dynamics σ; w3 **conformal inflation** — w0 shape × the smallest λ (grid) achieving 0.80 empirical coverage on *pre-cut* walk-forward folds. Selection (min mean |cov − 0.80|, lower is better): w3 at 0.003, far ahead of w0/w1 (0.161) and w2 (0.200); fitted λ = 2.5 / 3.0 / 1.0 (persistence/reversion/ar1).
 
 Single confirmatory shot, odd half @1975: persistence coverage 0.420 → **0.681** [0.564, 0.779], IS 0.494 → 0.426. Improved and *still a miss* (0.80 outside the interval); reversion under w3 calibrated (0.812). No second shot taken.
 
@@ -182,7 +182,7 @@ Every bucket's Wilson interval contains the stated 0.80; mean bucket miscalibrat
 4. **AR1 silence on anchor tapes** — honest abstention (≥3 pre-cut points required), not a bug.
 5. **anchors@2010 coverage 0.144 is a degeneracy**: 567/603 claims from single-point trains → zero-width bands (non-degenerate subset: 0.972). A width floor for train_n = 1 is noted for pre-registration *before* the next sweep, not patched retroactively.
 6. **Same-polity historical bridge lane: n = 3** — Wilson [0.061, 0.792] is consistent with anything; no width model fixes a sample-size problem.
-7. **Event tape has no empire-level polities** — `shock_windows_for_polity("ottoman_empire")` = ∅; the mechanism is live but the tape names successor states only.
+7. **Event tape has no empire-level polities** — `shock_windows_for_polity("ottoman_empire")` returns no windows; the mechanism is live but the tape names successor states only.
 
 ## 9. The load-bearing methodological commitments
 
